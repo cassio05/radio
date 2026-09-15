@@ -2,1604 +2,538 @@
 <html lang="pt-BR">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Connect Cassio • Web Rádio</title>
-
-<meta name="referrer"
-      content="strict-origin-when-cross-origin">
-
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
-      rel="stylesheet">
-
-
-<style>
-
-/* =====================================================
-   RESET
-   ===================================================== */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-}
-
-
-/* =====================================================
-   BODY
-   ===================================================== */
-
-body {
-
-    background:
-
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(23,241,143,.10),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(0,140,255,.08),
-            transparent 30%
-        ),
-
-        #020506;
-
-    color: white;
-
-    font-family:
-        'Rajdhani',
-        sans-serif;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    min-height: 100vh;
-
-    overflow-x: hidden;
-}
-
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-
-        linear-gradient(
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        );
-
-    background-size: 40px 40px;
-
-    pointer-events: none;
-}
-
-
-/* =====================================================
-   RADIO
-   ===================================================== */
-
-.radio {
-
-    width: min(92vw, 430px);
-
-    padding:
-        32px
-        25px
-        25px;
-
-    border:
-        1px solid
-        rgba(23,241,143,.22);
-
-    border-radius: 28px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(10,20,20,.96),
-            rgba(2,8,10,.98)
-        );
-
-    box-shadow:
-
-        0 0 40px
-        rgba(0,255,150,.08),
-
-        inset 0 0 30px
-        rgba(0,255,150,.025);
-
-    position: relative;
-
-    text-align: center;
-
-    backdrop-filter: blur(15px);
-}
-
-
-/* =====================================================
-   LOGO
-   ===================================================== */
-
-.logo {
-
-    font-family:
-        'Orbitron',
-        sans-serif;
-
-    font-size: 25px;
-
-    font-weight: 800;
-
-    letter-spacing: 3px;
-
-    color: #17f18f;
-
-    text-shadow:
-
-        0 0 10px
-        rgba(23,241,143,.6),
-
-        0 0 25px
-        rgba(23,241,143,.25);
-}
-
-
-.subtitle {
-
-    margin-top: 5px;
-
-    font-size: 13px;
-
-    letter-spacing: 5px;
-
-    color:
-        rgba(255,255,255,.55);
-}
-
-
-/* =====================================================
-   STATUS
-   ===================================================== */
-
-.status {
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    margin-top: 20px;
-
-    padding:
-        6px
-        13px;
-
-    border-radius: 30px;
-
-    border:
-        1px solid
-        rgba(23,241,143,.25);
-
-    background:
-        rgba(23,241,143,.06);
-
-    color:
-        rgba(255,255,255,.7);
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-}
-
-
-.status-dot {
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #555;
-
-    transition: .3s;
-}
-
-
-.status.live .status-dot {
-
-    background: #17f18f;
-
-    box-shadow:
-
-        0 0 8px #17f18f,
-
-        0 0 15px
-        rgba(23,241,143,.7);
-}
-
-
-/* =====================================================
-   DISCO
-   ===================================================== */
-
-.cover {
-
-    width: 220px;
-    height: 220px;
-
-    margin:
-        25px auto
-        20px;
-
-    border-radius: 50%;
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-
-        radial-gradient(
-            circle,
-            #101818 0%,
-            #07100f 45%,
-            #020505 70%,
-            #000 100%
-        );
-
-    border:
-        1px solid
-        rgba(23,241,143,.28);
-
-    box-shadow:
-
-        0 0 20px
-        rgba(23,241,143,.12),
-
-        0 0 50px
-        rgba(23,241,143,.08),
-
-        inset 0 0 35px
-        rgba(23,241,143,.07);
-}
-
-
-.cover::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 13px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(23,241,143,.15);
-
-    box-shadow:
-
-        inset 0 0 20px
-        rgba(23,241,143,.12);
-}
-
-
-.cover::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 35px;
-    height: 35px;
-
-    border-radius: 50%;
-
-    background: #020505;
-
-    border:
-        2px solid
-        #17f18f;
-
-    box-shadow:
-
-        0 0 12px
-        rgba(23,241,143,.6);
-}
-
-
-.disc {
-
-    position: absolute;
-
-    inset: 22px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(23,241,143,.08);
-
-    background:
-
-        repeating-radial-gradient(
-            circle,
-            transparent 0px,
-            transparent 5px,
-            rgba(255,255,255,.025) 6px,
-            transparent 7px
-        );
-
-    transition: .4s;
-}
-
-
-.playing .disc {
-
-    animation:
-        spin
-        7s
-        linear
-        infinite;
-}
-
-
-@keyframes spin {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* =====================================================
-   NOME / TITULO DA MUSICA (MARQUEE)
-   ===================================================== */
-
-.station-name {
-
-    font-family:
-        'Orbitron',
-        sans-serif;
-
-    font-size: 14px;
-
-    letter-spacing: 1px;
-
-    color:
-        rgba(255,255,255,.82);
-
-    margin-bottom: 18px;
-
-    overflow: hidden;
-
-    white-space: nowrap;
-
-    position: relative;
-
-    width: 100%;
-
-    height: 22px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-
-.station-name-text {
-
-    display: inline-block;
-
-    padding-left: 0%;
-
-    transition: transform 0.1s linear;
-}
-
-
-.station-name.scroll .station-name-text {
-
-    padding-left: 100%;
-
-    animation:
-        marquee
-        30s
-        linear
-        infinite;
-}
-
-
-@keyframes marquee {
-
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(-100%, 0);
-    }
-
-}
-
-
-/* =====================================================
-   CONTROLES
-   ===================================================== */
-
-.controls {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 32px;
-}
-
-
-/* =====================================================
-   BOTÕES
-   ===================================================== */
-
-.play,
-.control-btn {
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(23,241,143,.55);
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(23,241,143,.16),
-            rgba(23,241,143,.03)
-        );
-
-    color: #17f18f;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    transition:
-
-        transform .15s,
-
-        box-shadow .2s,
-
-        background .2s;
-}
-
-
-/* =====================================================
-   PLAY
-   ===================================================== */
-
-.play {
-
-    width: 72px;
-    height: 72px;
-
-    font-size: 28px;
-
-    border-color:
-        rgba(23,241,143,.75);
-
-    box-shadow:
-
-        0 0 18px
-        rgba(23,241,143,.22),
-
-        inset 0 0 20px
-        rgba(23,241,143,.08);
-}
-
-
-/* =====================================================
-   ANTERIOR / PRÓXIMA
-   ===================================================== */
-
-.control-btn {
-
-    width: 52px;
-    height: 52px;
-
-    font-size: 20px;
-
-    box-shadow:
-
-        0 0 12px
-        rgba(23,241,143,.10),
-
-        inset 0 0 12px
-        rgba(23,241,143,.04);
-}
-
-
-/* =====================================================
-   HOVER
-   ===================================================== */
-
-.play:hover {
-
-    transform: scale(1.05);
-
-    box-shadow:
-
-        0 0 25px
-        rgba(23,241,143,.45),
-
-        inset 0 0 25px
-        rgba(23,241,143,.12);
-}
-
-
-.control-btn:hover {
-
-    transform: scale(1.08);
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(23,241,143,.25),
-            rgba(23,241,143,.05)
-        );
-
-    box-shadow:
-
-        0 0 20px
-        rgba(23,241,143,.35),
-
-        inset 0 0 15px
-        rgba(23,241,143,.08);
-}
-
-
-.play:active,
-.control-btn:active {
-
-    transform: scale(.92);
-}
-
-
-/* =====================================================
-   VOLUME
-   ===================================================== */
-
-.volume-area {
-
-    margin-top: 24px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-}
-
-
-.volume-icon {
-
-    color:
-        rgba(255,255,255,.5);
-
-    font-size: 18px;
-}
-
-
-input[type="range"] {
-
-    appearance: none;
-
-    width: 100%;
-
-    height: 4px;
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.12);
-
-    outline: none;
-}
-
-
-input[type="range"]::-webkit-slider-thumb {
-
-    appearance: none;
-
-    width: 15px;
-    height: 15px;
-
-    border-radius: 50%;
-
-    background: #17f18f;
-
-    box-shadow:
-        0 0 10px
-        rgba(23,241,143,.7);
-
-    cursor: pointer;
-}
-
-
-input[type="range"]::-moz-range-thumb {
-
-    width: 15px;
-    height: 15px;
-
-    border-radius: 50%;
-
-    background: #17f18f;
-
-    border: none;
-
-    cursor: pointer;
-}
-
-
-.volume-value {
-
-    min-width: 35px;
-
-    text-align: right;
-
-    color:
-        rgba(255,255,255,.45);
-
-    font-size: 12px;
-}
-
-
-/* =====================================================
-   ERRO
-   ===================================================== */
-
-.error {
-
-    margin-top: 12px;
-
-    font-size: 11px;
-
-    color: #ff6868;
-
-    display: none;
-}
-
-
-/* =====================================================
-   RODAPÉ
-   ===================================================== */
-
-.footer {
-
-    margin-top: 25px;
-
-    padding-top: 18px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.06);
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    color:
-        rgba(255,255,255,.28);
-}
-
-
-/* =====================================================
-   PLAYER YOUTUBE
-   ===================================================== */
-
-#youtube-player {
-
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    left: -9999px;
-}
-
-
-/* =====================================================
-   CELULAR
-   ===================================================== */
-
-@media (max-width: 420px) {
-
-    .radio {
-
-        padding:
-            28px
-            18px
-            22px;
-    }
-
-    .controls {
-
-        gap: 24px;
-    }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Cassio • Web Rádio</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 50% 15%, rgba(23,241,143,.10), transparent 30%),
+                radial-gradient(circle at 20% 80%, rgba(0,140,255,.08), transparent 30%),
+                #020506;
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* CONTAINER RADIO */
+        .radio {
+            width: min(92vw, 430px);
+            padding: 32px 25px 25px;
+            border: 1px solid rgba(23,241,143,.22);
+            border-radius: 28px;
+            background: linear-gradient(145deg, rgba(10,20,20,.96), rgba(2,8,10,.98));
+            box-shadow: 0 0 40px rgba(0,255,150,.08), inset 0 0 30px rgba(0,255,150,.025);
+            position: relative;
+            text-align: center;
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #17f18f;
+            text-shadow: 0 0 10px rgba(23,241,143,.6), 0 0 25px rgba(23,241,143,.25);
+        }
+
+        .subtitle {
+            margin-top: 5px;
+            font-size: 13px;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,.55);
+        }
+
+        /* STATUS */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 6px 13px;
+            border-radius: 30px;
+            border: 1px solid rgba(23,241,143,.25);
+            background: rgba(23,241,143,.06);
+            color: rgba(255,255,255,.7);
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #555;
+            transition: .3s;
+        }
+
+        .status.live .status-dot {
+            background: #17f18f;
+            box-shadow: 0 0 8px #17f18f, 0 0 15px rgba(23,241,143,.7);
+        }
+
+        /* DISCO */
+        .cover {
+            width: 220px;
+            height: 220px;
+            margin: 25px auto 20px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #101818 0%, #07100f 45%, #020505 70%, #000 100%);
+            border: 1px solid rgba(23,241,143,.28);
+            box-shadow: 0 0 20px rgba(23,241,143,.12), 0 0 50px rgba(23,241,143,.08), inset 0 0 35px rgba(23,241,143,.07);
+        }
+
+        .cover::before {
+            content: "";
+            position: absolute;
+            inset: 13px;
+            border-radius: 50%;
+            border: 1px solid rgba(23,241,143,.15);
+            box-shadow: inset 0 0 20px rgba(23,241,143,.12);
+        }
+
+        .cover::after {
+            content: "";
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #020505;
+            border: 2px solid #17f18f;
+            box-shadow: 0 0 12px rgba(23,241,143,.6);
+        }
+
+        .disc {
+            position: absolute;
+            inset: 22px;
+            border-radius: 50%;
+            border: 1px solid rgba(23,241,143,.08);
+            background: repeating-radial-gradient(circle, transparent 0px, transparent 5px, rgba(255,255,255,.025) 6px, transparent 7px);
+            transition: .4s;
+        }
+
+        .playing .disc {
+            animation: spin 7s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* TITULO DA MUSICA (LETREIRO / MARQUEE) */
+        .station-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,.82);
+            margin-bottom: 18px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .station-name-text {
+            display: inline-block;
+            padding-left: 0%;
+            transition: transform 0.1s linear;
+        }
+
+        .station-name.scroll .station-name-text {
+            padding-left: 100%;
+            animation: marquee 12s linear infinite; /* Ajuste o tempo aqui se quiser mais rápido/lento */
+        }
+
+        @keyframes marquee {
+            0%, 10% { transform: translate(0, 0); }
+            90%, 100% { transform: translate(-100%, 0); }
+        }
+
+        /* CONTROLES */
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .play, .control-btn {
+            border-radius: 50%;
+            border: 1px solid rgba(23,241,143,.55);
+            background: radial-gradient(circle, rgba(23,241,143,.16), rgba(23,241,143,.03));
+            color: #17f18f;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform .15s, box-shadow .2s, background .2s;
+        }
+
+        .play {
+            width: 72px;
+            height: 72px;
+            font-size: 28px;
+            border-color: rgba(23,241,143,.75);
+            box-shadow: 0 0 18px rgba(23,241,143,.22), inset 0 0 20px rgba(23,241,143,.08);
+        }
+
+        .control-btn {
+            width: 52px;
+            height: 52px;
+            font-size: 20px;
+            box-shadow: 0 0 12px rgba(23,241,143,.10), inset 0 0 12px rgba(23,241,143,.04);
+        }
+
+        .play:hover, .control-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(23,241,143,.45), inset 0 0 25px rgba(23,241,143,.12);
+        }
+
+        .play:active, .control-btn:active {
+            transform: scale(.92);
+        }
+
+        /* VOLUME */
+        .volume-area {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .volume-icon {
+            color: rgba(255,255,255,.5);
+            font-size: 18px;
+        }
+
+        input[type="range"] {
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 10px;
+            background: rgba(255,255,255,.12);
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #17f18f;
+            box-shadow: 0 0 10px rgba(23,241,143,.7);
+            cursor: pointer;
+        }
+
+        .volume-value {
+            min-width: 35px;
+            text-align: right;
+            color: rgba(255,255,255,.45);
+            font-size: 12px;
+        }
+
+        .error {
+            margin-top: 12px;
+            font-size: 11px;
+            color: #ff6868;
+            display: none;
+        }
+
+        .footer {
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,.06);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,.28);
+        }
+
+        #youtube-player {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+            left: -9999px;
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <div class="radio" id="radio">
+        <div class="logo">CONNECT CASSIO</div>
+        <div class="subtitle">WEB RÁDIO</div>
 
-<div class="radio" id="radio">
+        <div class="status" id="status">
+            <span class="status-dot"></span>
+            <span id="statusText">CLIQUE PARA OUVIR</span>
+        </div>
 
+        <div class="cover">
+            <div class="disc"></div>
+        </div>
 
-    <div class="logo">
-        CONNECT CASSIO
+        <div class="station-name" id="stationContainer">
+            <span class="station-name-text" id="stationName">CONNECT CASSIO RADIO</span>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" id="prevButton" title="Anterior" type="button">⏮</button>
+            <button class="play" id="playButton" title="Play / Pause" type="button">▶</button>
+            <button class="control-btn" id="nextButton" title="Próxima" type="button">⏭</button>
+        </div>
+
+        <div class="volume-area">
+            <span class="volume-icon">🔊</span>
+            <input id="volume" type="range" min="0" max="100" value="80">
+            <span class="volume-value" id="volumeValue">80%</span>
+        </div>
+
+        <div class="error" id="errorMessage">Erro ao carregar o player.</div>
+        <div class="footer">PLAYLIST YOUTUBE • CONNECT CASSIO</div>
     </div>
 
-
-    <div class="subtitle">
-        WEB RÁDIO
-    </div>
-
-
-    <div class="status" id="status">
-
-        <span class="status-dot"></span>
-
-        <span id="statusText">
-            CLIQUE PARA OUVIR
-        </span>
-
-    </div>
-
-
-    <div class="cover">
-
-        <div class="disc"></div>
-
-    </div>
-
-
-    <div class="station-name" id="stationContainer">
-
-        <span class="station-name-text" id="stationName">
-            CONNECT CASSIO RADIO
-        </span>
-
-    </div>
-
-
-    <div class="controls">
-
-
-        <button
-            class="control-btn"
-            id="prevButton"
-            aria-label="Música anterior"
-            title="Música anterior"
-            type="button">
-
-            ⏮
-
-        </button>
-
-
-        <button
-            class="play"
-            id="playButton"
-            aria-label="Reproduzir"
-            title="Play / Pause"
-            type="button">
-
-            ▶
-
-        </button>
-
-
-        <button
-            class="control-btn"
-            id="nextButton"
-            aria-label="Próxima música"
-            title="Próxima música"
-            type="button">
-
-            ⏭
-
-        </button>
-
-
-    </div>
-
-
-    <div class="volume-area">
-
-        <span class="volume-icon">
-            🔊
-        </span>
-
-        <input
-            id="volume"
-            type="range"
-            min="0"
-            max="100"
-            value="80">
-
-        <span
-            class="volume-value"
-            id="volumeValue">
-
-            80%
-
-        </span>
-
-    </div>
-
-
-    <div
-        class="error"
-        id="errorMessage">
-
-        Não foi possível carregar o player
-        do YouTube.
-
-    </div>
-
-
-    <div class="footer">
-        PLAYLIST YOUTUBE • CONNECT CASSIO
-    </div>
-
-
-</div>
-
-
-<div id="youtube-player"></div>
-
-
-<script>
-
-/* =====================================================
-   PLAYLIST
-   ===================================================== */
-
-const PLAYLIST_ID =
-    "PLNWbSmfvxyQFtCXeLH9BPz9nrrjcIFfCH";
-
-
-/* =====================================================
-   ORIGIN
-   ===================================================== */
-
-const PAGE_ORIGIN =
-    window.location.origin;
-
-
-/* =====================================================
-   ELEMENTOS
-   ===================================================== */
-
-const playButton =
-    document.getElementById("playButton");
-
-const nextButton =
-    document.getElementById("nextButton");
-
-const prevButton =
-    document.getElementById("prevButton");
-
-const volume =
-    document.getElementById("volume");
-
-const volumeValue =
-    document.getElementById("volumeValue");
-
-const status =
-    document.getElementById("status");
-
-const statusText =
-    document.getElementById("statusText");
-
-const radio =
-    document.getElementById("radio");
-
-const errorMessage =
-    document.getElementById("errorMessage");
-
-const stationName =
-    document.getElementById("stationName");
-
-const stationContainer =
-    document.getElementById("stationContainer");
-
-
-/* =====================================================
-   ESTADOS
-   ===================================================== */
-
-let player = null;
-
-let playerReady = false;
-
-let playing = false;
-
-let radioDesejaTocar = false;
-
-let trocandoMusica = false;
-
-
-/* =====================================================
-   CARREGAR API YOUTUBE
-   ===================================================== */
-
-const tag =
-    document.createElement("script");
-
-tag.src =
-    "https://www.youtube.com/iframe_api";
-
-document.head.appendChild(tag);
-
-
-/* =====================================================
-   YOUTUBE API READY
-   ===================================================== */
-
-function onYouTubeIframeAPIReady() {
-
-    player =
-        new YT.Player(
-
-            "youtube-player",
-
-            {
-
+    <div id="youtube-player"></div>
+
+    <script>
+        const PLAYLIST_ID = "PLNWbSmfvxyQFtCXeLH9BPz9nrrjcIFfCH";
+        const PAGE_ORIGIN = window.location.origin;
+        const DELAY_AUTOMATICO = 500; // Tempo em ms entre o término de uma música e o início da próxima
+
+        const playButton = document.getElementById("playButton");
+        const nextButton = document.getElementById("nextButton");
+        const prevButton = document.getElementById("prevButton");
+        const volume = document.getElementById("volume");
+        const volumeValue = document.getElementById("volumeValue");
+        const status = document.getElementById("status");
+        const statusText = document.getElementById("statusText");
+        const radio = document.getElementById("radio");
+        const errorMessage = document.getElementById("errorMessage");
+        const stationName = document.getElementById("stationName");
+        const stationContainer = document.getElementById("stationContainer");
+
+        let player = null;
+        let playerReady = false;
+        let playing = false;
+        let radioDesejaTocar = false;
+        let timerProxima = null;
+
+        /* CARREGAR API YOUTUBE */
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player("youtube-player", {
                 width: "1",
-
                 height: "1",
-
                 playerVars: {
-
-                    listType:
-                        "playlist",
-
-                    list:
-                        PLAYLIST_ID,
-
-                    autoplay:
-                        0,
-
-                    origin:
-                        PAGE_ORIGIN,
-
-                    enablejsapi:
-                        1,
-
-                    playsinline:
-                        1,
-
-                    rel:
-                        0,
-
-                    modestbranding:
-                        1
-
+                    listType: "playlist",
+                    list: PLAYLIST_ID,
+                    autoplay: 0,
+                    origin: PAGE_ORIGIN,
+                    enablejsapi: 1,
+                    playsinline: 1,
+                    rel: 0
                 },
-
                 events: {
-
-                    onReady:
-                        onPlayerReady,
-
-                    onStateChange:
-                        onPlayerStateChange,
-
-                    onError:
-                        onPlayerError
-
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange,
+                    onError: onPlayerError
                 }
+            });
+        }
 
+        function onPlayerReady() {
+            playerReady = true;
+            player.setVolume(Number(volume.value));
+        }
+
+        /* ATUALIZA O NOME DO VÍDEO E VERIFICA SE DEVE ROLAR O TEXTO */
+        function atualizarNomeMusica() {
+            if (!player || typeof player.getVideoData !== "function") return;
+
+            const videoData = player.getVideoData();
+            if (videoData && videoData.title) {
+                stationName.textContent = videoData.title;
+                stationContainer.classList.remove("scroll");
+
+                // Se o tamanho do texto for maior que a largura visível, liga o efeito de rolar
+                if (stationName.offsetWidth > stationContainer.offsetWidth) {
+                    stationContainer.classList.add("scroll");
+                }
+            }
+        }
+
+        function mostrarTocando() {
+            playing = true;
+            radio.classList.add("playing");
+            status.classList.add("live");
+            statusText.textContent = "NO AR";
+            playButton.textContent = "❚❚";
+            errorMessage.style.display = "none";
+            atualizarNomeMusica();
+        }
+
+        function mostrarPausado() {
+            playing = false;
+            radio.classList.remove("playing");
+            status.classList.remove("live");
+            statusText.textContent = "PAUSADO";
+            playButton.textContent = "▶";
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+                mostrarTocando();
+                return;
             }
 
-        );
+            if (event.data === YT.PlayerState.PAUSED) {
+                if (!radioDesejaTocar) {
+                    mostrarPausado();
+                }
+                return;
+            }
 
-}
+            if (event.data === YT.PlayerState.BUFFERING) {
+                if (radioDesejaTocar) {
+                    statusText.textContent = "CARREGANDO...";
+                }
+                atualizarNomeMusica();
+                return;
+            }
 
+            /* FIM DA MÚSICA - PASSA AUTOMATICAMENTE */
+            if (event.data === YT.PlayerState.ENDED) {
+                if (radioDesejaTocar) {
+                    statusText.textContent = "CARREGANDO...";
+                    if (timerProxima) clearTimeout(timerProxima);
 
-/* =====================================================
-   PLAYER PRONTO
-   ===================================================== */
-
-function onPlayerReady() {
-
-    playerReady = true;
-
-    player.setVolume(
-        Number(volume.value)
-    );
-
-    player.cuePlaylist({
-
-        listType:
-            "playlist",
-
-        list:
-            PLAYLIST_ID
-
-    });
-
-}
-
-
-/* =====================================================
-   ATUALIZAR NOME DA MÚSICA (MARQUEE)
-   ===================================================== */
-
-function atualizarNomeMusica() {
-
-    if (!player || typeof player.getVideoData !== "function") {
-        return;
-    }
-
-    const videoData = player.getVideoData();
-
-    if (videoData && videoData.title) {
-
-        stationName.textContent = videoData.title;
-
-        stationContainer.classList.remove("scroll");
-
-        /* Se o título for maior que o container da rádio, ativa o efeito de rolar */
-        if (stationName.offsetWidth > stationContainer.offsetWidth) {
-
-            stationContainer.classList.add("scroll");
-
+                    timerProxima = setTimeout(() => {
+                        if (playerReady && player) {
+                            player.nextVideo();
+                        }
+                    }, DELAY_AUTOMATICO);
+                } else {
+                    mostrarPausado();
+                }
+            }
         }
 
-    }
-
-}
-
-
-/* =====================================================
-   INTERFACE TOCANDO
-   ===================================================== */
-
-function mostrarTocando() {
-
-    playing = true;
-
-    radio.classList.add(
-        "playing"
-    );
-
-    status.classList.add(
-        "live"
-    );
-
-    statusText.textContent =
-        "NO AR";
-
-    playButton.textContent =
-        "❚❚";
-
-    playButton.setAttribute(
-        "aria-label",
-        "Pausar"
-    );
-
-    playButton.setAttribute(
-        "title",
-        "Pausar"
-    );
-
-    errorMessage.style.display =
-        "none";
-
-    atualizarNomeMusica();
-
-}
-
-
-/* =====================================================
-   INTERFACE PAUSADA
-   ===================================================== */
-
-function mostrarPausado() {
-
-    playing = false;
-
-    radio.classList.remove(
-        "playing"
-    );
-
-    status.classList.remove(
-        "live"
-    );
-
-    statusText.textContent =
-        "PAUSADO";
-
-    playButton.textContent =
-        "▶";
-
-    playButton.setAttribute(
-        "aria-label",
-        "Reproduzir"
-    );
-
-    playButton.setAttribute(
-        "title",
-        "Play / Pause"
-    );
-
-}
-
-
-/* =====================================================
-   ESTADO YOUTUBE
-   ===================================================== */
-
-function onPlayerStateChange(event) {
-
-
-    /* PLAYING */
-
-    if (
-        event.data ===
-        YT.PlayerState.PLAYING
-    ) {
-
-        trocandoMusica =
-            false;
-
-        mostrarTocando();
-
-        return;
-
-    }
-
-
-    /* PAUSED */
-
-    if (
-        event.data ===
-        YT.PlayerState.PAUSED
-    ) {
-
-        if (
-            trocandoMusica &&
-            radioDesejaTocar
-        ) {
-
-            return;
-
+        function onPlayerError(event) {
+            errorMessage.style.display = "block";
+            errorMessage.textContent = "Erro na reprodução da faixa (código: " + event.data + "). Pule para a próxima.";
         }
 
-        radioDesejaTocar =
-            false;
-
-        mostrarPausado();
-
-        return;
-
-    }
-
-
-    /* BUFFERING */
-
-    if (
-        event.data ===
-        YT.PlayerState.BUFFERING
-    ) {
-
-        if (
-            radioDesejaTocar
-        ) {
-
-            statusText.textContent =
-                "CARREGANDO...";
-
-        }
-
-        atualizarNomeMusica();
-
-        return;
-
-    }
-
-
-    /* ENDED */
-
-    if (
-        event.data ===
-        YT.PlayerState.ENDED
-    ) {
-
-        if (
-            radioDesejaTocar
-        ) {
-
-            return;
-
-        }
-
-        mostrarPausado();
-
-    }
-
-}
-
-
-/* =====================================================
-   ERROS
-   ===================================================== */
-
-function onPlayerError(event) {
-
-    console.log(
-        "[YOUTUBE ERROR]",
-        event.data
-    );
-
-    errorMessage.style.display =
-        "block";
-
-
-    if (
-        event.data === 153
-    ) {
-
-        errorMessage.textContent =
-            "YouTube bloqueou o player: abra esta página pelo HTTPS/GitHub Pages.";
-
-    }
-
-    else if (
-        event.data === 101 ||
-        event.data === 150
-    ) {
-
-        errorMessage.textContent =
-            "Este vídeo não permite reprodução incorporada.";
-
-    }
-
-    else if (
-        event.data === 100
-    ) {
-
-        errorMessage.textContent =
-            "Vídeo não encontrado ou privado.";
-
-    }
-
-}
-
-
-/* =====================================================
-   PLAY / PAUSE
-   ===================================================== */
-
-playButton.addEventListener(
-    "click",
-    function() {
-
-
-        if (
-            !playerReady ||
-            !player
-        ) {
-
-            return;
-
-        }
-
-
-        /* PAUSAR */
-
-        if (playing) {
-
-            radioDesejaTocar =
-                false;
-
-            trocandoMusica =
-                false;
-
-            player.pauseVideo();
-
-            return;
-
-        }
-
-
-        /* TOCAR */
-
-        radioDesejaTocar =
-            true;
-
-        const state =
-            player.getPlayerState();
-
-
-        if (
-            state === YT.PlayerState.CUED ||
-            state === -1
-        ) {
-
-            player.playVideoAt(0);
-
-        }
-
-        else {
-
-            player.playVideo();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   PRÓXIMA (TROCA RÁPIDA)
-   ===================================================== */
-
-nextButton.addEventListener(
-    "click",
-    function() {
-
-
-        if (
-            !playerReady ||
-            !player
-        ) {
-
-            return;
-
-        }
-
-        radioDesejaTocar =
-            true;
-
-        trocandoMusica =
-            true;
-
-        statusText.textContent =
-            "CARREGANDO...";
-
-        const state =
-            player.getPlayerState();
-
-
-        if (
-            state === YT.PlayerState.CUED ||
-            state === -1
-        ) {
-
-            player.playVideoAt(1);
-
-        }
-
-        else {
+        /* EVENTO PLAY/PAUSE */
+        playButton.addEventListener("click", function() {
+            if (!playerReady || !player) return;
+
+            if (playing) {
+                radioDesejaTocar = false;
+                player.pauseVideo();
+            } else {
+                radioDesejaTocar = true;
+                player.playVideo();
+            }
+        });
+
+        /* PRÓXIMA - CORREÇÃO DE ATRAZO DE 30 SECONDS */
+        nextButton.addEventListener("click", function() {
+            if (!playerReady || !player) return;
+            if (timerProxima) clearTimeout(timerProxima);
+
+            radioDesejaTocar = true;
+            statusText.textContent = "CARREGANDO...";
 
             player.nextVideo();
+            // Força a execução imediata para evitar a trava da API
+            setTimeout(() => {
+                if (player && typeof player.playVideo === "function") {
+                    player.playVideo();
+                }
+            }, 50);
+        });
 
-        }
+        /* ANTERIOR - CORREÇÃO DE ATRAZO DE 30 SECONDS */
+        prevButton.addEventListener("click", function() {
+            if (!playerReady || !player) return;
+            if (timerProxima) clearTimeout(timerProxima);
 
-    }
-);
-
-
-/* =====================================================
-   ANTERIOR (TROCA RÁPIDA)
-   ===================================================== */
-
-prevButton.addEventListener(
-    "click",
-    function() {
-
-
-        if (
-            !playerReady ||
-            !player
-        ) {
-
-            return;
-
-        }
-
-        radioDesejaTocar =
-            true;
-
-        trocandoMusica =
-            true;
-
-        statusText.textContent =
-            "CARREGANDO...";
-
-        const state =
-            player.getPlayerState();
-
-
-        if (
-            state === YT.PlayerState.CUED ||
-            state === -1
-        ) {
-
-            player.playVideoAt(0);
-
-        }
-
-        else {
+            radioDesejaTocar = true;
+            statusText.textContent = "CARREGANDO...";
 
             player.previousVideo();
+            // Força a execução imediata
+            setTimeout(() => {
+                if (player && typeof player.playVideo === "function") {
+                    player.playVideo();
+                }
+            }, 50);
+        });
 
-        }
+        /* CONTROLE DE VOLUME */
+        volume.addEventListener("input", function() {
+            const val = Number(this.value);
+            volumeValue.textContent = val + "%";
+            if (playerReady && player) {
+                player.setVolume(val);
+            }
+        });
 
-    }
-);
-
-
-/* =====================================================
-   VOLUME
-   ===================================================== */
-
-volume.addEventListener(
-    "input",
-    function() {
-
-
-        const value =
-            Number(this.value);
-
-
-        volumeValue.textContent =
-            value + "%";
-
-
-        if (
-            playerReady &&
-            player
-        ) {
-
-            player.setVolume(
-                value
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   TECLADO
-   ===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-
-        if (
-            event.target.tagName ===
-            "INPUT"
-        ) {
-
-            return;
-
-        }
-
-
-        /* ESPAÇO */
-
-        if (
-            event.code === "Space"
-        ) {
-
-            event.preventDefault();
-
-            playButton.click();
-
-        }
-
-
-        /* DIREITA */
-
-        else if (
-            event.code === "ArrowRight"
-        ) {
-
-            event.preventDefault();
-
-            nextButton.click();
-
-        }
-
-
-        /* ESQUERDA */
-
-        else if (
-            event.code === "ArrowLeft"
-        ) {
-
-            event.preventDefault();
-
-            prevButton.click();
-
-        }
-
-    }
-);
-
-</script>
-
-
+        /* ATALHOS TECLADO (ESPAÇO E SETAS) */
+        document.addEventListener("keydown", function(e) {
+            if (e.target.tagName === "INPUT") return;
+            if (e.code === "Space") { e.preventDefault(); playButton.click(); }
+            if (e.code === "ArrowRight") { e.preventDefault(); nextButton.click(); }
+            if (e.code === "ArrowLeft") { e.preventDefault(); prevButton.click(); }
+        });
+    </script>
 </body>
-
 </html>
