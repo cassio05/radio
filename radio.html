@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,24 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Connect Cassio • Web Rádio</title>
-
-<!--
-=========================================================
- CONNECT CASSIO - WEB RÁDIO
-=========================================================
-
- ATENÇÃO:
- Este arquivo deve ser executado por HTTP/HTTPS.
- Exemplo:
- https://cassio05.github.io/cassim-eletricista.com/radio.html
-
- NÃO abra diretamente como:
- file:///C:/...
-
- Para trocar a rádio, altere SOMENTE:
- PLAYLIST_ID
-=========================================================
--->
 
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -287,26 +269,31 @@ body::before {
     margin-bottom: 18px;
 }
 
+
+/* =====================================================
+   CONTROLES
+   ===================================================== */
+
 .controls {
     display: flex;
 
     justify-content: center;
     align-items: center;
+
+    gap: 10px;
 }
 
-.play {
-    width: 72px;
-    height: 72px;
-
+.play,
+.control-btn {
     border-radius: 50%;
 
-    border: 1px solid rgba(23,241,143,.7);
+    border: 1px solid rgba(23,241,143,.55);
 
     background:
         radial-gradient(
             circle,
-            rgba(23,241,143,.22),
-            rgba(23,241,143,.05)
+            rgba(23,241,143,.16),
+            rgba(23,241,143,.03)
         );
 
     color: #17f18f;
@@ -318,17 +305,44 @@ body::before {
     align-items: center;
     justify-content: center;
 
-    font-size: 28px;
-
-    box-shadow:
-        0 0 18px rgba(23,241,143,.22),
-        inset 0 0 20px rgba(23,241,143,.08);
-
     transition:
         transform .15s,
         box-shadow .2s,
         background .2s;
 }
+
+
+/* BOTÃO PRINCIPAL */
+
+.play {
+    width: 72px;
+    height: 72px;
+
+    font-size: 28px;
+
+    border-color: rgba(23,241,143,.75);
+
+    box-shadow:
+        0 0 18px rgba(23,241,143,.22),
+        inset 0 0 20px rgba(23,241,143,.08);
+}
+
+
+/* BOTÕES ANTERIOR / PRÓXIMA */
+
+.control-btn {
+    width: 52px;
+    height: 52px;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 0 12px rgba(23,241,143,.10),
+        inset 0 0 12px rgba(23,241,143,.04);
+}
+
+
+/* HOVER */
 
 .play:hover {
     transform: scale(1.05);
@@ -338,9 +352,33 @@ body::before {
         inset 0 0 25px rgba(23,241,143,.12);
 }
 
-.play:active {
-    transform: scale(.95);
+.control-btn:hover {
+    transform: scale(1.08);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(23,241,143,.25),
+            rgba(23,241,143,.05)
+        );
+
+    box-shadow:
+        0 0 20px rgba(23,241,143,.35),
+        inset 0 0 15px rgba(23,241,143,.08);
 }
+
+
+/* CLIQUE */
+
+.play:active,
+.control-btn:active {
+    transform: scale(.92);
+}
+
+
+/* =====================================================
+   VOLUME
+   ===================================================== */
 
 .volume-area {
     margin-top: 24px;
@@ -411,6 +449,11 @@ input[type="range"]::-moz-range-thumb {
     font-size: 12px;
 }
 
+
+/* =====================================================
+   RODAPÉ
+   ===================================================== */
+
 .footer {
     margin-top: 25px;
 
@@ -425,6 +468,11 @@ input[type="range"]::-moz-range-thumb {
     color: rgba(255,255,255,.28);
 }
 
+
+/* =====================================================
+   PLAYER YOUTUBE INVISÍVEL
+   ===================================================== */
+
 #youtube-player {
     position: absolute;
 
@@ -437,6 +485,11 @@ input[type="range"]::-moz-range-thumb {
 
     left: -9999px;
 }
+
+
+/* =====================================================
+   ERRO
+   ===================================================== */
 
 .error {
     margin-top: 12px;
@@ -451,51 +504,110 @@ input[type="range"]::-moz-range-thumb {
 </style>
 </head>
 
+
 <body>
 
+
 <div class="radio" id="radio">
+
+
+    <!-- LOGO -->
 
     <div class="logo">
         CONNECT CASSIO
     </div>
 
+
     <div class="subtitle">
         WEB RÁDIO
     </div>
 
+
+    <!-- STATUS -->
+
     <div class="status" id="status">
+
         <span class="status-dot"></span>
-        <span id="statusText">PAUSADO</span>
+
+        <span id="statusText">
+            PAUSADO
+        </span>
+
     </div>
 
-    <div class="cover" id="cover">
+
+    <!-- DISCO -->
+
+    <div class="cover">
 
         <div class="disc"></div>
 
     </div>
 
+
+    <!-- NOME -->
+
     <div class="station-name">
         CONNECT CASSIO RADIO
     </div>
 
+
+    <!-- CONTROLES -->
+
     <div class="controls">
+
+
+        <!-- ANTERIOR -->
+
+        <button
+            class="control-btn"
+            id="prevButton"
+            aria-label="Música anterior"
+            title="Música anterior"
+            type="button"
+        >
+            ⏮
+        </button>
+
+
+        <!-- PLAY / PAUSE -->
 
         <button
             class="play"
             id="playButton"
             aria-label="Reproduzir"
+            title="Play / Pause"
             type="button"
         >
             ▶
         </button>
 
+
+        <!-- PRÓXIMA -->
+
+        <button
+            class="control-btn"
+            id="nextButton"
+            aria-label="Próxima música"
+            title="Próxima música"
+            type="button"
+        >
+            ⏭
+        </button>
+
+
     </div>
 
+
+    <!-- VOLUME -->
+
     <div class="volume-area">
+
 
         <span class="volume-icon">
             🔊
         </span>
+
 
         <input
             id="volume"
@@ -505,6 +617,7 @@ input[type="range"]::-moz-range-thumb {
             value="80"
         >
 
+
         <span
             class="volume-value"
             id="volumeValue"
@@ -512,7 +625,11 @@ input[type="range"]::-moz-range-thumb {
             80%
         </span>
 
+
     </div>
+
+
+    <!-- ERRO -->
 
     <div
         class="error"
@@ -521,16 +638,26 @@ input[type="range"]::-moz-range-thumb {
         Não foi possível carregar o player do YouTube.
     </div>
 
+
+    <!-- RODAPÉ -->
+
     <div class="footer">
         PLAYLIST YOUTUBE • CONNECT CASSIO
     </div>
 
+
 </div>
 
-<!-- Player YouTube invisível -->
+
+<!-- =====================================================
+     PLAYER YOUTUBE
+     ===================================================== -->
+
 <div id="youtube-player"></div>
 
+
 <script>
+
 
 /* =====================================================
    CONFIGURAÇÃO
@@ -543,15 +670,11 @@ const PLAYLIST_ID =
 
 
 /* =====================================================
-   CONFIGURAÇÃO AUTOMÁTICA DO ORIGIN
-
-   No GitHub Pages, por exemplo:
-   https://cassio05.github.io
-
-   Não precisa alterar manualmente.
+   ORIGIN AUTOMÁTICO
    ===================================================== */
 
-const PAGE_ORIGIN = window.location.origin;
+const PAGE_ORIGIN =
+    window.location.origin;
 
 
 /* =====================================================
@@ -560,6 +683,12 @@ const PAGE_ORIGIN = window.location.origin;
 
 const playButton =
     document.getElementById("playButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const prevButton =
+    document.getElementById("prevButton");
 
 const volume =
     document.getElementById("volume");
@@ -610,46 +739,48 @@ document.head.appendChild(tag);
 
 function onYouTubeIframeAPIReady() {
 
-    player = new YT.Player(
-        "youtube-player",
-        {
+    player =
+        new YT.Player(
+            "youtube-player",
+            {
 
-            width: "1",
-            height: "1",
+                width: "1",
 
-            playerVars: {
+                height: "1",
 
-                listType: "playlist",
+                playerVars: {
 
-                list: PLAYLIST_ID,
+                    listType: "playlist",
 
-                origin: PAGE_ORIGIN,
+                    list: PLAYLIST_ID,
 
-                enablejsapi: 1,
+                    origin: PAGE_ORIGIN,
 
-                playsinline: 1,
+                    enablejsapi: 1,
 
-                rel: 0,
+                    playsinline: 1,
 
-                modestbranding: 1
+                    rel: 0,
 
-            },
+                    modestbranding: 1
 
-            events: {
+                },
 
-                onReady:
-                    onPlayerReady,
+                events: {
 
-                onStateChange:
-                    onPlayerStateChange,
+                    onReady:
+                        onPlayerReady,
 
-                onError:
-                    onPlayerError
+                    onStateChange:
+                        onPlayerStateChange,
+
+                    onError:
+                        onPlayerError
+
+                }
 
             }
-
-        }
-    );
+        );
 }
 
 
@@ -665,11 +796,6 @@ function onPlayerReady(event) {
         Number(volume.value)
     );
 
-    /*
-     Não inicia automaticamente.
-     O usuário precisa clicar no botão.
-    */
-
 }
 
 
@@ -679,6 +805,11 @@ function onPlayerReady(event) {
 
 function onPlayerStateChange(event) {
 
+
+    /* ================================
+       TOCANDO
+       ================================= */
+
     if (
         event.data ===
         YT.PlayerState.PLAYING
@@ -686,9 +817,13 @@ function onPlayerStateChange(event) {
 
         playing = true;
 
-        radio.classList.add("playing");
+        radio.classList.add(
+            "playing"
+        );
 
-        status.classList.add("live");
+        status.classList.add(
+            "live"
+        );
 
         statusText.textContent =
             "NO AR";
@@ -698,8 +833,12 @@ function onPlayerStateChange(event) {
 
         errorMessage.style.display =
             "none";
-
     }
+
+
+    /* ================================
+       PAUSADO
+       ================================= */
 
     else if (
         event.data ===
@@ -708,9 +847,13 @@ function onPlayerStateChange(event) {
 
         playing = false;
 
-        radio.classList.remove("playing");
+        radio.classList.remove(
+            "playing"
+        );
 
-        status.classList.remove("live");
+        status.classList.remove(
+            "live"
+        );
 
         statusText.textContent =
             "PAUSADO";
@@ -719,21 +862,30 @@ function onPlayerStateChange(event) {
             "▶";
     }
 
+
+    /* ================================
+       TERMINOU
+       ================================= */
+
     else if (
         event.data ===
         YT.PlayerState.ENDED
     ) {
 
         /*
-         O próprio playlist do YouTube
-         passa para a próxima música.
+         A playlist do YouTube
+         seguirá normalmente.
         */
 
         playing = false;
 
-        radio.classList.remove("playing");
+        radio.classList.remove(
+            "playing"
+        );
 
-        status.classList.remove("live");
+        status.classList.remove(
+            "live"
+        );
 
         statusText.textContent =
             "PAUSADO";
@@ -746,7 +898,7 @@ function onPlayerStateChange(event) {
 
 
 /* =====================================================
-   ERRO
+   ERROS YOUTUBE
    ===================================================== */
 
 function onPlayerError(event) {
@@ -759,18 +911,20 @@ function onPlayerError(event) {
     errorMessage.style.display =
         "block";
 
-    /*
-     153 = Referer / identificação ausente
-     101/150 = vídeo não permite incorporação
-     100 = vídeo inexistente/privado
-    */
 
-    if (event.data === 153) {
+    /* ERRO 153 */
+
+    if (
+        event.data === 153
+    ) {
 
         errorMessage.textContent =
             "YouTube bloqueou o player: abra esta página pelo HTTPS/GitHub Pages.";
 
     }
+
+
+    /* ERRO 101 / 150 */
 
     else if (
         event.data === 101 ||
@@ -782,7 +936,12 @@ function onPlayerError(event) {
 
     }
 
-    else if (event.data === 100) {
+
+    /* ERRO 100 */
+
+    else if (
+        event.data === 100
+    ) {
 
         errorMessage.textContent =
             "Vídeo não encontrado ou privado.";
@@ -800,7 +959,11 @@ playButton.addEventListener(
     "click",
     function () {
 
-        if (!playerReady || !player) {
+
+        if (
+            !playerReady ||
+            !player
+        ) {
 
             console.log(
                 "[RADIO] Player ainda carregando..."
@@ -808,6 +971,7 @@ playButton.addEventListener(
 
             return;
         }
+
 
         if (playing) {
 
@@ -826,6 +990,64 @@ playButton.addEventListener(
 
 
 /* =====================================================
+   PRÓXIMA MÚSICA
+   ===================================================== */
+
+nextButton.addEventListener(
+    "click",
+    function () {
+
+
+        if (
+            !playerReady ||
+            !player
+        ) {
+
+            return;
+        }
+
+
+        console.log(
+            "[RADIO] Próxima música"
+        );
+
+
+        player.nextVideo();
+
+    }
+);
+
+
+/* =====================================================
+   MÚSICA ANTERIOR
+   ===================================================== */
+
+prevButton.addEventListener(
+    "click",
+    function () {
+
+
+        if (
+            !playerReady ||
+            !player
+        ) {
+
+            return;
+        }
+
+
+        console.log(
+            "[RADIO] Música anterior"
+        );
+
+
+        player.previousVideo();
+
+    }
+);
+
+
+/* =====================================================
    VOLUME
    ===================================================== */
 
@@ -833,18 +1055,23 @@ volume.addEventListener(
     "input",
     function () {
 
+
         const value =
             Number(this.value);
 
+
         volumeValue.textContent =
             value + "%";
+
 
         if (
             playerReady &&
             player
         ) {
 
-            player.setVolume(value);
+            player.setVolume(
+                value
+            );
 
         }
 
@@ -856,20 +1083,67 @@ volume.addEventListener(
    TECLADO
 
    ESPAÇO = PLAY / PAUSE
+   SETA DIREITA = PRÓXIMA
+   SETA ESQUERDA = ANTERIOR
    ===================================================== */
 
 document.addEventListener(
     "keydown",
     function (event) {
 
+
+        /*
+         Ignora quando estiver mexendo
+         no controle de volume.
+        */
+
         if (
-            event.code === "Space" &&
-            event.target.tagName !== "INPUT"
+            event.target.tagName ===
+            "INPUT"
+        ) {
+
+            return;
+        }
+
+
+        /* ESPAÇO */
+
+        if (
+            event.code ===
+            "Space"
         ) {
 
             event.preventDefault();
 
             playButton.click();
+
+        }
+
+
+        /* SETA DIREITA */
+
+        else if (
+            event.code ===
+            "ArrowRight"
+        ) {
+
+            event.preventDefault();
+
+            nextButton.click();
+
+        }
+
+
+        /* SETA ESQUERDA */
+
+        else if (
+            event.code ===
+            "ArrowLeft"
+        ) {
+
+            event.preventDefault();
+
+            prevButton.click();
 
         }
 
@@ -880,3 +1154,4 @@ document.addEventListener(
 
 </body>
 </html>
+```
