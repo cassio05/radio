@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Connect Cassio • Web Rádio</title>
+
+<!--
+=========================================================
+ CONNECT CASSIO - WEB RÁDIO
+=========================================================
+
+ ATENÇÃO:
+ Este arquivo deve ser executado por HTTP/HTTPS.
+ Exemplo:
+ https://cassio05.github.io/cassim-eletricista.com/radio.html
+
+ NÃO abra diretamente como:
+ file:///C:/...
+
+ Para trocar a rádio, altere SOMENTE:
+ PLAYLIST_ID
+=========================================================
+-->
+
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(23,241,143,.10), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(0,140,255,.08), transparent 30%),
+        #020506;
+
+    color: white;
+
+    font-family: 'Rajdhani', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+
+    background-size: 40px 40px;
+
+    pointer-events: none;
+}
+
+.radio {
+    width: min(92vw, 430px);
+
+    padding: 32px 25px 25px;
+
+    border: 1px solid rgba(23,241,143,.22);
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,20,20,.96),
+            rgba(2,8,10,.98)
+        );
+
+    box-shadow:
+        0 0 40px rgba(0,255,150,.08),
+        inset 0 0 30px rgba(0,255,150,.025);
+
+    position: relative;
+
+    text-align: center;
+
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: #17f18f;
+
+    text-shadow:
+        0 0 10px rgba(23,241,143,.6),
+        0 0 25px rgba(23,241,143,.25);
+}
+
+.subtitle {
+    margin-top: 5px;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,.55);
+}
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 20px;
+
+    padding: 6px 13px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(23,241,143,.25);
+
+    background: rgba(23,241,143,.06);
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #555;
+
+    transition: .3s;
+}
+
+.status.live .status-dot {
+    background: #17f18f;
+
+    box-shadow:
+        0 0 8px #17f18f,
+        0 0 15px rgba(23,241,143,.7);
+}
+
+.cover {
+    width: 220px;
+    height: 220px;
+
+    margin: 25px auto 20px;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #101818 0%,
+            #07100f 45%,
+            #020505 70%,
+            #000 100%
+        );
+
+    border: 1px solid rgba(23,241,143,.28);
+
+    box-shadow:
+        0 0 20px rgba(23,241,143,.12),
+        0 0 50px rgba(23,241,143,.08),
+        inset 0 0 35px rgba(23,241,143,.07);
+}
+
+.cover::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(23,241,143,.15);
+
+    box-shadow:
+        inset 0 0 20px rgba(23,241,143,.12);
+}
+
+.cover::after {
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: #020505;
+
+    border: 2px solid #17f18f;
+
+    box-shadow:
+        0 0 12px rgba(23,241,143,.6);
+}
+
+.disc {
+    position: absolute;
+
+    inset: 22px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(23,241,143,.08);
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            transparent 0px,
+            transparent 5px,
+            rgba(255,255,255,.025) 6px,
+            transparent 7px
+        );
+
+    transition: .4s;
+}
+
+.playing .disc {
+    animation: spin 7s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.station-name {
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,.82);
+
+    margin-bottom: 18px;
+}
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.play {
+    width: 72px;
+    height: 72px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(23,241,143,.7);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(23,241,143,.22),
+            rgba(23,241,143,.05)
+        );
+
+    color: #17f18f;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 0 18px rgba(23,241,143,.22),
+        inset 0 0 20px rgba(23,241,143,.08);
+
+    transition:
+        transform .15s,
+        box-shadow .2s,
+        background .2s;
+}
+
+.play:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 25px rgba(23,241,143,.45),
+        inset 0 0 25px rgba(23,241,143,.12);
+}
+
+.play:active {
+    transform: scale(.95);
+}
+
+.volume-area {
+    margin-top: 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.volume-icon {
+    color: rgba(255,255,255,.5);
+
+    font-size: 18px;
+}
+
+input[type="range"] {
+    appearance: none;
+
+    width: 100%;
+
+    height: 4px;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.12);
+
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #17f18f;
+
+    box-shadow:
+        0 0 10px rgba(23,241,143,.7);
+
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #17f18f;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.volume-value {
+    min-width: 35px;
+
+    text-align: right;
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 12px;
+}
+
+.footer {
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid rgba(255,255,255,.06);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,.28);
+}
+
+#youtube-player {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    left: -9999px;
+}
+
+.error {
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    color: #ff6868;
+
+    display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="radio" id="radio">
+
+    <div class="logo">
+        CONNECT CASSIO
+    </div>
+
+    <div class="subtitle">
+        WEB RÁDIO
+    </div>
+
+    <div class="status" id="status">
+        <span class="status-dot"></span>
+        <span id="statusText">PAUSADO</span>
+    </div>
+
+    <div class="cover" id="cover">
+
+        <div class="disc"></div>
+
+    </div>
+
+    <div class="station-name">
+        CONNECT CASSIO RADIO
+    </div>
+
+    <div class="controls">
+
+        <button
+            class="play"
+            id="playButton"
+            aria-label="Reproduzir"
+            type="button"
+        >
+            ▶
+        </button>
+
+    </div>
+
+    <div class="volume-area">
+
+        <span class="volume-icon">
+            🔊
+        </span>
+
+        <input
+            id="volume"
+            type="range"
+            min="0"
+            max="100"
+            value="80"
+        >
+
+        <span
+            class="volume-value"
+            id="volumeValue"
+        >
+            80%
+        </span>
+
+    </div>
+
+    <div
+        class="error"
+        id="errorMessage"
+    >
+        Não foi possível carregar o player do YouTube.
+    </div>
+
+    <div class="footer">
+        PLAYLIST YOUTUBE • CONNECT CASSIO
+    </div>
+
+</div>
+
+<!-- Player YouTube invisível -->
+<div id="youtube-player"></div>
+
+<script>
+
+/* =====================================================
+   CONFIGURAÇÃO
+
+   MUDE SOMENTE ESTE ID PARA TROCAR A PLAYLIST
+   ===================================================== */
+
+const PLAYLIST_ID =
+    "PLNWbSmfvxyQFtCXeLH9BPz9nrrjcIFfCH";
+
+
+/* =====================================================
+   CONFIGURAÇÃO AUTOMÁTICA DO ORIGIN
+
+   No GitHub Pages, por exemplo:
+   https://cassio05.github.io
+
+   Não precisa alterar manualmente.
+   ===================================================== */
+
+const PAGE_ORIGIN = window.location.origin;
+
+
+/* =====================================================
+   ELEMENTOS
+   ===================================================== */
+
+const playButton =
+    document.getElementById("playButton");
+
+const volume =
+    document.getElementById("volume");
+
+const volumeValue =
+    document.getElementById("volumeValue");
+
+const status =
+    document.getElementById("status");
+
+const statusText =
+    document.getElementById("statusText");
+
+const radio =
+    document.getElementById("radio");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+/* =====================================================
+   VARIÁVEIS
+   ===================================================== */
+
+let player = null;
+
+let playerReady = false;
+
+let playing = false;
+
+
+/* =====================================================
+   CARREGA API DO YOUTUBE
+   ===================================================== */
+
+const tag =
+    document.createElement("script");
+
+tag.src =
+    "https://www.youtube.com/iframe_api";
+
+document.head.appendChild(tag);
+
+
+/* =====================================================
+   YOUTUBE API READY
+   ===================================================== */
+
+function onYouTubeIframeAPIReady() {
+
+    player = new YT.Player(
+        "youtube-player",
+        {
+
+            width: "1",
+            height: "1",
+
+            playerVars: {
+
+                listType: "playlist",
+
+                list: PLAYLIST_ID,
+
+                origin: PAGE_ORIGIN,
+
+                enablejsapi: 1,
+
+                playsinline: 1,
+
+                rel: 0,
+
+                modestbranding: 1
+
+            },
+
+            events: {
+
+                onReady:
+                    onPlayerReady,
+
+                onStateChange:
+                    onPlayerStateChange,
+
+                onError:
+                    onPlayerError
+
+            }
+
+        }
+    );
+}
+
+
+/* =====================================================
+   PLAYER PRONTO
+   ===================================================== */
+
+function onPlayerReady(event) {
+
+    playerReady = true;
+
+    player.setVolume(
+        Number(volume.value)
+    );
+
+    /*
+     Não inicia automaticamente.
+     O usuário precisa clicar no botão.
+    */
+
+}
+
+
+/* =====================================================
+   ESTADO DO PLAYER
+   ===================================================== */
+
+function onPlayerStateChange(event) {
+
+    if (
+        event.data ===
+        YT.PlayerState.PLAYING
+    ) {
+
+        playing = true;
+
+        radio.classList.add("playing");
+
+        status.classList.add("live");
+
+        statusText.textContent =
+            "NO AR";
+
+        playButton.textContent =
+            "❚❚";
+
+        errorMessage.style.display =
+            "none";
+
+    }
+
+    else if (
+        event.data ===
+        YT.PlayerState.PAUSED
+    ) {
+
+        playing = false;
+
+        radio.classList.remove("playing");
+
+        status.classList.remove("live");
+
+        statusText.textContent =
+            "PAUSADO";
+
+        playButton.textContent =
+            "▶";
+    }
+
+    else if (
+        event.data ===
+        YT.PlayerState.ENDED
+    ) {
+
+        /*
+         O próprio playlist do YouTube
+         passa para a próxima música.
+        */
+
+        playing = false;
+
+        radio.classList.remove("playing");
+
+        status.classList.remove("live");
+
+        statusText.textContent =
+            "PAUSADO";
+
+        playButton.textContent =
+            "▶";
+    }
+
+}
+
+
+/* =====================================================
+   ERRO
+   ===================================================== */
+
+function onPlayerError(event) {
+
+    console.log(
+        "[YOUTUBE ERROR]",
+        event.data
+    );
+
+    errorMessage.style.display =
+        "block";
+
+    /*
+     153 = Referer / identificação ausente
+     101/150 = vídeo não permite incorporação
+     100 = vídeo inexistente/privado
+    */
+
+    if (event.data === 153) {
+
+        errorMessage.textContent =
+            "YouTube bloqueou o player: abra esta página pelo HTTPS/GitHub Pages.";
+
+    }
+
+    else if (
+        event.data === 101 ||
+        event.data === 150
+    ) {
+
+        errorMessage.textContent =
+            "Este vídeo não permite reprodução incorporada.";
+
+    }
+
+    else if (event.data === 100) {
+
+        errorMessage.textContent =
+            "Vídeo não encontrado ou privado.";
+
+    }
+
+}
+
+
+/* =====================================================
+   PLAY / PAUSE
+   ===================================================== */
+
+playButton.addEventListener(
+    "click",
+    function () {
+
+        if (!playerReady || !player) {
+
+            console.log(
+                "[RADIO] Player ainda carregando..."
+            );
+
+            return;
+        }
+
+        if (playing) {
+
+            player.pauseVideo();
+
+        }
+
+        else {
+
+            player.playVideo();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   VOLUME
+   ===================================================== */
+
+volume.addEventListener(
+    "input",
+    function () {
+
+        const value =
+            Number(this.value);
+
+        volumeValue.textContent =
+            value + "%";
+
+        if (
+            playerReady &&
+            player
+        ) {
+
+            player.setVolume(value);
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   TECLADO
+
+   ESPAÇO = PLAY / PAUSE
+   ===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.code === "Space" &&
+            event.target.tagName !== "INPUT"
+        ) {
+
+            event.preventDefault();
+
+            playButton.click();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
