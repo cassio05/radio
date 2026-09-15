@@ -1406,53 +1406,45 @@ playButton.addEventListener(
 
 
 /* =====================================================
-   PRÓXIMA (TROCA RÁPIDA)
+   PRÓXIMA (TROCA INSTANTÂNEA VIA BOTÃO)
    ===================================================== */
 
-nextButton.addEventListener(
-    "click",
-    function() {
+nextButton.addEventListener("click", function() {
+    if (!playerReady || !player) return;
+
+    // Limpa timers pendentes de fim de música
+    if (timerProxima) clearTimeout(timerProxima);
+
+    radioDesejaTocar = true;
+    trocandoMusica = true;
+
+    statusText.textContent = "CARREGANDO...";
+
+    // Avança e força a execução imediata sem esperar o evento de cue
+    player.nextVideo();
+    player.playVideo();
+});
 
 
-        if (
-            !playerReady ||
-            !player
-        ) {
+/* =====================================================
+   ANTERIOR (TROCA INSTANTÂNEA VIA BOTÃO)
+   ===================================================== */
 
-            return;
+prevButton.addEventListener("click", function() {
+    if (!playerReady || !player) return;
 
-        }
+    // Limpa timers pendentes de fim de música
+    if (timerProxima) clearTimeout(timerProxima);
 
-        radioDesejaTocar =
-            true;
+    radioDesejaTocar = true;
+    trocandoMusica = true;
 
-        trocandoMusica =
-            true;
+    statusText.textContent = "CARREGANDO...";
 
-        statusText.textContent =
-            "CARREGANDO...";
-
-        const state =
-            player.getPlayerState();
-
-
-        if (
-            state === YT.PlayerState.CUED ||
-            state === -1
-        ) {
-
-            player.playVideoAt(1);
-
-        }
-
-        else {
-
-            player.nextVideo();
-
-        }
-
-    }
-);
+    // Volta e força a execução imediata
+    player.previousVideo();
+    player.playVideo();
+});
 
 
 /* =====================================================
