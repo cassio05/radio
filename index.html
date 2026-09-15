@@ -399,7 +399,7 @@ body::before {
 
 
 /* =====================================================
-   NOME
+   NOME / TITULO DA MUSICA (MARQUEE)
    ===================================================== */
 
 .station-name {
@@ -408,14 +408,65 @@ body::before {
         'Orbitron',
         sans-serif;
 
-    font-size: 15px;
+    font-size: 14px;
 
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 
     color:
         rgba(255,255,255,.82);
 
     margin-bottom: 18px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    position: relative;
+
+    width: 100%;
+
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.station-name-text {
+
+    display: inline-block;
+
+    padding-left: 0%;
+
+    transition: transform 0.1s linear;
+}
+
+
+.station-name.scroll .station-name-text {
+
+    padding-left: 100%;
+
+    animation:
+        marquee
+        12s
+        linear
+        infinite;
+}
+
+
+@keyframes marquee {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-100%, 0);
+    }
+
 }
 
 
@@ -774,8 +825,12 @@ input[type="range"]::-moz-range-thumb {
     </div>
 
 
-    <div class="station-name">
-        CONNECT CASSIO RADIO
+    <div class="station-name" id="stationContainer">
+
+        <span class="station-name-text" id="stationName">
+            CONNECT CASSIO RADIO
+        </span>
+
     </div>
 
 
@@ -915,6 +970,12 @@ const radio =
 const errorMessage =
     document.getElementById("errorMessage");
 
+const stationName =
+    document.getElementById("stationName");
+
+const stationContainer =
+    document.getElementById("stationContainer");
+
 
 /* =====================================================
    ESTADOS
@@ -1035,6 +1096,36 @@ function onPlayerReady() {
 
 
 /* =====================================================
+   ATUALIZAR NOME DA MÚSICA (MARQUEE)
+   ===================================================== */
+
+function atualizarNomeMusica() {
+
+    if (!player || typeof player.getVideoData !== "function") {
+        return;
+    }
+
+    const videoData = player.getVideoData();
+
+    if (videoData && videoData.title) {
+
+        stationName.textContent = videoData.title;
+
+        stationContainer.classList.remove("scroll");
+
+        /* Se o título for maior que o container da rádio, ativa o efeito de rolar */
+        if (stationName.offsetWidth > stationContainer.offsetWidth) {
+
+            stationContainer.classList.add("scroll");
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
    INTERFACE TOCANDO
    ===================================================== */
 
@@ -1068,6 +1159,8 @@ function mostrarTocando() {
 
     errorMessage.style.display =
         "none";
+
+    atualizarNomeMusica();
 
 }
 
@@ -1172,6 +1265,8 @@ function onPlayerStateChange(event) {
                 "CARREGANDO...";
 
         }
+
+        atualizarNomeMusica();
 
         return;
 
@@ -1311,7 +1406,7 @@ playButton.addEventListener(
 
 
 /* =====================================================
-   PRÓXIMA
+   PRÓXIMA (TROCA RÁPIDA)
    ===================================================== */
 
 nextButton.addEventListener(
@@ -1361,7 +1456,7 @@ nextButton.addEventListener(
 
 
 /* =====================================================
-   ANTERIOR
+   ANTERIOR (TROCA RÁPIDA)
    ===================================================== */
 
 prevButton.addEventListener(
