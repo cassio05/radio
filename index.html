@@ -1,20 +1,38 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Connect Cassio • Web Rádio</title>
 
-<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="referrer"
+      content="strict-origin-when-cross-origin">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- FONTES -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+
 
 <style>
+
+/* =====================================================
+   RESET
+   ===================================================== */
 
 * {
     box-sizing: border-box;
@@ -22,55 +40,105 @@
     padding: 0;
 }
 
+
 html,
 body {
+
     width: 100%;
     min-height: 100%;
+
 }
 
+
+/* =====================================================
+   BODY
+   ===================================================== */
+
 body {
+
     background:
-        radial-gradient(circle at 50% 15%, rgba(23,241,143,.10), transparent 30%),
-        radial-gradient(circle at 20% 80%, rgba(0,140,255,.08), transparent 30%),
+
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(23,241,143,.10),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(0,140,255,.08),
+            transparent 30%
+        ),
+
         #020506;
 
     color: white;
 
-    font-family: 'Rajdhani', sans-serif;
+    font-family:
+        'Rajdhani',
+        sans-serif;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
     min-height: 100vh;
 
     overflow-x: hidden;
+
 }
 
+
 body::before {
+
     content: "";
+
     position: fixed;
+
     inset: 0;
 
     background:
-        linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+
+        linear-gradient(
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        );
 
     background-size: 40px 40px;
 
     pointer-events: none;
+
 }
 
+
+/* =====================================================
+   RADIO
+   ===================================================== */
+
 .radio {
+
     width: min(92vw, 430px);
 
-    padding: 32px 25px 25px;
+    padding:
+        32px
+        25px
+        25px;
 
-    border: 1px solid rgba(23,241,143,.22);
+    border:
+        1px solid
+        rgba(23,241,143,.22);
 
     border-radius: 28px;
 
     background:
+
         linear-gradient(
             145deg,
             rgba(10,20,20,.96),
@@ -78,20 +146,34 @@ body::before {
         );
 
     box-shadow:
-        0 0 40px rgba(0,255,150,.08),
-        inset 0 0 30px rgba(0,255,150,.025);
+
+        0 0 40px
+        rgba(0,255,150,.08),
+
+        inset 0 0 30px
+        rgba(0,255,150,.025);
 
     position: relative;
 
     text-align: center;
 
     backdrop-filter: blur(15px);
+
 }
 
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
 .logo {
-    font-family: 'Orbitron', sans-serif;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
 
     font-size: 25px;
+
     font-weight: 800;
 
     letter-spacing: 3px;
@@ -99,21 +181,36 @@ body::before {
     color: #17f18f;
 
     text-shadow:
-        0 0 10px rgba(23,241,143,.6),
-        0 0 25px rgba(23,241,143,.25);
+
+        0 0 10px
+        rgba(23,241,143,.6),
+
+        0 0 25px
+        rgba(23,241,143,.25);
+
 }
 
+
 .subtitle {
+
     margin-top: 5px;
 
     font-size: 13px;
 
     letter-spacing: 5px;
 
-    color: rgba(255,255,255,.55);
+    color:
+        rgba(255,255,255,.55);
+
 }
 
+
+/* =====================================================
+   STATUS
+   ===================================================== */
+
 .status {
+
     display: inline-flex;
 
     align-items: center;
@@ -123,22 +220,31 @@ body::before {
 
     margin-top: 20px;
 
-    padding: 6px 13px;
+    padding:
+        6px
+        13px;
 
     border-radius: 30px;
 
-    border: 1px solid rgba(23,241,143,.25);
+    border:
+        1px solid
+        rgba(23,241,143,.25);
 
-    background: rgba(23,241,143,.06);
+    background:
+        rgba(23,241,143,.06);
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
     font-size: 12px;
 
     letter-spacing: 2px;
+
 }
 
+
 .status-dot {
+
     width: 7px;
     height: 7px;
 
@@ -147,21 +253,36 @@ body::before {
     background: #555;
 
     transition: .3s;
+
 }
 
+
 .status.live .status-dot {
+
     background: #17f18f;
 
     box-shadow:
+
         0 0 8px #17f18f,
-        0 0 15px rgba(23,241,143,.7);
+
+        0 0 15px
+        rgba(23,241,143,.7);
+
 }
 
+
+/* =====================================================
+   DISCO
+   ===================================================== */
+
 .cover {
+
     width: 220px;
     height: 220px;
 
-    margin: 25px auto 20px;
+    margin:
+        25px auto
+        20px;
 
     border-radius: 50%;
 
@@ -173,6 +294,7 @@ body::before {
     justify-content: center;
 
     background:
+
         radial-gradient(
             circle,
             #101818 0%,
@@ -181,15 +303,26 @@ body::before {
             #000 100%
         );
 
-    border: 1px solid rgba(23,241,143,.28);
+    border:
+        1px solid
+        rgba(23,241,143,.28);
 
     box-shadow:
-        0 0 20px rgba(23,241,143,.12),
-        0 0 50px rgba(23,241,143,.08),
-        inset 0 0 35px rgba(23,241,143,.07);
+
+        0 0 20px
+        rgba(23,241,143,.12),
+
+        0 0 50px
+        rgba(23,241,143,.08),
+
+        inset 0 0 35px
+        rgba(23,241,143,.07);
+
 }
 
+
 .cover::before {
+
     content: "";
 
     position: absolute;
@@ -198,13 +331,20 @@ body::before {
 
     border-radius: 50%;
 
-    border: 1px solid rgba(23,241,143,.15);
+    border:
+        1px solid
+        rgba(23,241,143,.15);
 
     box-shadow:
-        inset 0 0 20px rgba(23,241,143,.12);
+
+        inset 0 0 20px
+        rgba(23,241,143,.12);
+
 }
 
+
 .cover::after {
+
     content: "";
 
     position: absolute;
@@ -216,22 +356,32 @@ body::before {
 
     background: #020505;
 
-    border: 2px solid #17f18f;
+    border:
+        2px solid
+        #17f18f;
 
     box-shadow:
-        0 0 12px rgba(23,241,143,.6);
+
+        0 0 12px
+        rgba(23,241,143,.6);
+
 }
 
+
 .disc {
+
     position: absolute;
 
     inset: 22px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(23,241,143,.08);
+    border:
+        1px solid
+        rgba(23,241,143,.08);
 
     background:
+
         repeating-radial-gradient(
             circle,
             transparent 0px,
@@ -241,32 +391,59 @@ body::before {
         );
 
     transition: .4s;
+
 }
+
 
 .playing .disc {
-    animation: spin 7s linear infinite;
+
+    animation:
+        spin
+        7s
+        linear
+        infinite;
+
 }
 
+
 @keyframes spin {
+
     from {
-        transform: rotate(0deg);
+
+        transform:
+            rotate(0deg);
+
     }
 
     to {
-        transform: rotate(360deg);
+
+        transform:
+            rotate(360deg);
+
     }
+
 }
 
+
+/* =====================================================
+   NOME DA RÁDIO
+   ===================================================== */
+
 .station-name {
-    font-family: 'Orbitron', sans-serif;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
 
     font-size: 15px;
 
     letter-spacing: 2px;
 
-    color: rgba(255,255,255,.82);
+    color:
+        rgba(255,255,255,.82);
 
     margin-bottom: 18px;
+
 }
 
 
@@ -275,21 +452,37 @@ body::before {
    ===================================================== */
 
 .controls {
+
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
-    gap: 10px;
+    /*
+       DISTÂNCIA ENTRE OS BOTÕES
+    */
+
+    gap: 32px;
+
 }
+
+
+/* =====================================================
+   BOTÕES
+   ===================================================== */
 
 .play,
 .control-btn {
+
     border-radius: 50%;
 
-    border: 1px solid rgba(23,241,143,.55);
+    border:
+        1px solid
+        rgba(23,241,143,.55);
 
     background:
+
         radial-gradient(
             circle,
             rgba(23,241,143,.16),
@@ -306,56 +499,94 @@ body::before {
     justify-content: center;
 
     transition:
+
         transform .15s,
+
         box-shadow .2s,
+
         background .2s;
+
 }
 
 
-/* BOTÃO PRINCIPAL */
+/* =====================================================
+   PLAY
+   ===================================================== */
 
 .play {
+
     width: 72px;
     height: 72px;
 
     font-size: 28px;
 
-    border-color: rgba(23,241,143,.75);
+    border-color:
+        rgba(23,241,143,.75);
 
     box-shadow:
-        0 0 18px rgba(23,241,143,.22),
-        inset 0 0 20px rgba(23,241,143,.08);
+
+        0 0 18px
+        rgba(23,241,143,.22),
+
+        inset 0 0 20px
+        rgba(23,241,143,.08);
+
 }
 
 
-/* BOTÕES ANTERIOR / PRÓXIMA */
+/* =====================================================
+   ANTERIOR / PRÓXIMA
+   ===================================================== */
 
 .control-btn {
+
     width: 52px;
     height: 52px;
 
     font-size: 20px;
 
     box-shadow:
-        0 0 12px rgba(23,241,143,.10),
-        inset 0 0 12px rgba(23,241,143,.04);
+
+        0 0 12px
+        rgba(23,241,143,.10),
+
+        inset 0 0 12px
+        rgba(23,241,143,.04);
+
 }
 
 
-/* HOVER */
+/* =====================================================
+   HOVER PLAY
+   ===================================================== */
 
 .play:hover {
-    transform: scale(1.05);
+
+    transform:
+        scale(1.05);
 
     box-shadow:
-        0 0 25px rgba(23,241,143,.45),
-        inset 0 0 25px rgba(23,241,143,.12);
+
+        0 0 25px
+        rgba(23,241,143,.45),
+
+        inset 0 0 25px
+        rgba(23,241,143,.12);
+
 }
 
+
+/* =====================================================
+   HOVER OUTROS
+   ===================================================== */
+
 .control-btn:hover {
-    transform: scale(1.08);
+
+    transform:
+        scale(1.08);
 
     background:
+
         radial-gradient(
             circle,
             rgba(23,241,143,.25),
@@ -363,16 +594,26 @@ body::before {
         );
 
     box-shadow:
-        0 0 20px rgba(23,241,143,.35),
-        inset 0 0 15px rgba(23,241,143,.08);
+
+        0 0 20px
+        rgba(23,241,143,.35),
+
+        inset 0 0 15px
+        rgba(23,241,143,.08);
+
 }
 
 
-/* CLIQUE */
+/* =====================================================
+   CLIQUE
+   ===================================================== */
 
 .play:active,
 .control-btn:active {
-    transform: scale(.92);
+
+    transform:
+        scale(.92);
+
 }
 
 
@@ -381,6 +622,7 @@ body::before {
    ===================================================== */
 
 .volume-area {
+
     margin-top: 24px;
 
     display: flex;
@@ -388,15 +630,22 @@ body::before {
     align-items: center;
 
     gap: 12px;
+
 }
+
 
 .volume-icon {
-    color: rgba(255,255,255,.5);
+
+    color:
+        rgba(255,255,255,.5);
 
     font-size: 18px;
+
 }
 
+
 input[type="range"] {
+
     appearance: none;
 
     width: 100%;
@@ -405,12 +654,16 @@ input[type="range"] {
 
     border-radius: 10px;
 
-    background: rgba(255,255,255,.12);
+    background:
+        rgba(255,255,255,.12);
 
     outline: none;
+
 }
 
+
 input[type="range"]::-webkit-slider-thumb {
+
     appearance: none;
 
     width: 15px;
@@ -421,12 +674,17 @@ input[type="range"]::-webkit-slider-thumb {
     background: #17f18f;
 
     box-shadow:
-        0 0 10px rgba(23,241,143,.7);
+
+        0 0 10px
+        rgba(23,241,143,.7);
 
     cursor: pointer;
+
 }
 
+
 input[type="range"]::-moz-range-thumb {
+
     width: 15px;
     height: 15px;
 
@@ -437,16 +695,38 @@ input[type="range"]::-moz-range-thumb {
     border: none;
 
     cursor: pointer;
+
 }
 
+
 .volume-value {
+
     min-width: 35px;
 
     text-align: right;
 
-    color: rgba(255,255,255,.45);
+    color:
+        rgba(255,255,255,.45);
 
     font-size: 12px;
+
+}
+
+
+/* =====================================================
+   ERRO
+   ===================================================== */
+
+.error {
+
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    color: #ff6868;
+
+    display: none;
+
 }
 
 
@@ -455,17 +735,22 @@ input[type="range"]::-moz-range-thumb {
    ===================================================== */
 
 .footer {
+
     margin-top: 25px;
 
     padding-top: 18px;
 
-    border-top: 1px solid rgba(255,255,255,.06);
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
 
     font-size: 10px;
 
     letter-spacing: 2px;
 
-    color: rgba(255,255,255,.28);
+    color:
+        rgba(255,255,255,.28);
+
 }
 
 
@@ -474,6 +759,7 @@ input[type="range"]::-moz-range-thumb {
    ===================================================== */
 
 #youtube-player {
+
     position: absolute;
 
     width: 1px;
@@ -484,29 +770,44 @@ input[type="range"]::-moz-range-thumb {
     pointer-events: none;
 
     left: -9999px;
+
 }
 
 
 /* =====================================================
-   ERRO
+   CELULAR
    ===================================================== */
 
-.error {
-    margin-top: 12px;
+@media (max-width: 420px) {
 
-    font-size: 11px;
+    .radio {
 
-    color: #ff6868;
+        padding:
+            28px
+            18px
+            22px;
 
-    display: none;
+    }
+
+    .controls {
+
+        gap: 24px;
+
+    }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
+<!-- =====================================================
+     RADIO
+     ===================================================== -->
 
 <div class="radio" id="radio">
 
@@ -514,12 +815,18 @@ input[type="range"]::-moz-range-thumb {
     <!-- LOGO -->
 
     <div class="logo">
+
         CONNECT CASSIO
+
     </div>
 
 
+    <!-- SUBTÍTULO -->
+
     <div class="subtitle">
+
         WEB RÁDIO
+
     </div>
 
 
@@ -530,7 +837,9 @@ input[type="range"]::-moz-range-thumb {
         <span class="status-dot"></span>
 
         <span id="statusText">
+
             PAUSADO
+
         </span>
 
     </div>
@@ -548,11 +857,15 @@ input[type="range"]::-moz-range-thumb {
     <!-- NOME -->
 
     <div class="station-name">
+
         CONNECT CASSIO RADIO
+
     </div>
 
 
-    <!-- CONTROLES -->
+    <!-- =================================================
+         CONTROLES
+         ================================================= -->
 
     <div class="controls">
 
@@ -560,69 +873,98 @@ input[type="range"]::-moz-range-thumb {
         <!-- ANTERIOR -->
 
         <button
+
             class="control-btn"
+
             id="prevButton"
+
             aria-label="Música anterior"
+
             title="Música anterior"
-            type="button"
-        >
+
+            type="button">
+
             ⏮
+
         </button>
 
 
         <!-- PLAY / PAUSE -->
 
         <button
+
             class="play"
+
             id="playButton"
+
             aria-label="Reproduzir"
+
             title="Play / Pause"
-            type="button"
-        >
+
+            type="button">
+
             ▶
+
         </button>
 
 
         <!-- PRÓXIMA -->
 
         <button
+
             class="control-btn"
+
             id="nextButton"
+
             aria-label="Próxima música"
+
             title="Próxima música"
-            type="button"
-        >
+
+            type="button">
+
             ⏭
+
         </button>
 
 
     </div>
 
 
-    <!-- VOLUME -->
+    <!-- =================================================
+         VOLUME
+         ================================================= -->
 
     <div class="volume-area">
 
 
         <span class="volume-icon">
+
             🔊
+
         </span>
 
 
         <input
+
             id="volume"
+
             type="range"
+
             min="0"
+
             max="100"
-            value="80"
-        >
+
+            value="80">
 
 
         <span
+
             class="volume-value"
-            id="volumeValue"
-        >
+
+            id="volumeValue">
+
             80%
+
         </span>
 
 
@@ -632,17 +974,23 @@ input[type="range"]::-moz-range-thumb {
     <!-- ERRO -->
 
     <div
+
         class="error"
-        id="errorMessage"
-    >
-        Não foi possível carregar o player do YouTube.
+
+        id="errorMessage">
+
+        Não foi possível carregar o player
+        do YouTube.
+
     </div>
 
 
     <!-- RODAPÉ -->
 
     <div class="footer">
+
         PLAYLIST YOUTUBE • CONNECT CASSIO
+
     </div>
 
 
@@ -660,9 +1008,9 @@ input[type="range"]::-moz-range-thumb {
 
 
 /* =====================================================
-   CONFIGURAÇÃO
+   CONFIGURAÇÃO DA PLAYLIST
 
-   MUDE SOMENTE ESTE ID PARA TROCAR A PLAYLIST
+   ALTERE SOMENTE ESTE ID
    ===================================================== */
 
 const PLAYLIST_ID =
@@ -682,31 +1030,49 @@ const PAGE_ORIGIN =
    ===================================================== */
 
 const playButton =
-    document.getElementById("playButton");
+    document.getElementById(
+        "playButton"
+    );
 
 const nextButton =
-    document.getElementById("nextButton");
+    document.getElementById(
+        "nextButton"
+    );
 
 const prevButton =
-    document.getElementById("prevButton");
+    document.getElementById(
+        "prevButton"
+    );
 
 const volume =
-    document.getElementById("volume");
+    document.getElementById(
+        "volume"
+    );
 
 const volumeValue =
-    document.getElementById("volumeValue");
+    document.getElementById(
+        "volumeValue"
+    );
 
 const status =
-    document.getElementById("status");
+    document.getElementById(
+        "status"
+    );
 
 const statusText =
-    document.getElementById("statusText");
+    document.getElementById(
+        "statusText"
+    );
 
 const radio =
-    document.getElementById("radio");
+    document.getElementById(
+        "radio"
+    );
 
 const errorMessage =
-    document.getElementById("errorMessage");
+    document.getElementById(
+        "errorMessage"
+    );
 
 
 /* =====================================================
@@ -721,11 +1087,13 @@ let playing = false;
 
 
 /* =====================================================
-   CARREGA API DO YOUTUBE
+   CARREGAR API YOUTUBE
    ===================================================== */
 
 const tag =
-    document.createElement("script");
+    document.createElement(
+        "script"
+    );
 
 tag.src =
     "https://www.youtube.com/iframe_api";
@@ -739,32 +1107,44 @@ document.head.appendChild(tag);
 
 function onYouTubeIframeAPIReady() {
 
+
     player =
         new YT.Player(
+
             "youtube-player",
+
             {
 
                 width: "1",
 
                 height: "1",
 
+
                 playerVars: {
 
-                    listType: "playlist",
+                    listType:
+                        "playlist",
 
-                    list: PLAYLIST_ID,
+                    list:
+                        PLAYLIST_ID,
 
-                    origin: PAGE_ORIGIN,
+                    origin:
+                        PAGE_ORIGIN,
 
-                    enablejsapi: 1,
+                    enablejsapi:
+                        1,
 
-                    playsinline: 1,
+                    playsinline:
+                        1,
 
-                    rel: 0,
+                    rel:
+                        0,
 
-                    modestbranding: 1
+                    modestbranding:
+                        1
 
                 },
+
 
                 events: {
 
@@ -780,7 +1160,9 @@ function onYouTubeIframeAPIReady() {
                 }
 
             }
+
         );
+
 }
 
 
@@ -790,11 +1172,18 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerReady(event) {
 
+
     playerReady = true;
 
+
     player.setVolume(
-        Number(volume.value)
+
+        Number(
+            volume.value
+        )
+
     );
+
 
 }
 
@@ -806,107 +1195,138 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
 
 
-    /* ================================
+    /* =================================================
        TOCANDO
-       ================================= */
+       ================================================= */
 
     if (
+
         event.data ===
         YT.PlayerState.PLAYING
+
     ) {
 
+
         playing = true;
+
 
         radio.classList.add(
             "playing"
         );
 
+
         status.classList.add(
             "live"
         );
 
+
         statusText.textContent =
             "NO AR";
+
 
         playButton.textContent =
             "❚❚";
 
+
         errorMessage.style.display =
             "none";
+
     }
 
 
-    /* ================================
+    /* =================================================
        PAUSADO
-       ================================= */
+       ================================================= */
 
     else if (
+
         event.data ===
         YT.PlayerState.PAUSED
+
     ) {
 
+
         playing = false;
+
 
         radio.classList.remove(
             "playing"
         );
 
+
         status.classList.remove(
             "live"
         );
 
+
         statusText.textContent =
             "PAUSADO";
 
+
         playButton.textContent =
             "▶";
+
     }
 
 
-    /* ================================
-       TERMINOU
-       ================================= */
+    /* =================================================
+       FINALIZADO
+       ================================================= */
 
     else if (
+
         event.data ===
         YT.PlayerState.ENDED
+
     ) {
 
+
         /*
-         A playlist do YouTube
-         seguirá normalmente.
+         O próprio YouTube
+         seguirá a playlist.
         */
 
+
         playing = false;
+
 
         radio.classList.remove(
             "playing"
         );
 
+
         status.classList.remove(
             "live"
         );
 
+
         statusText.textContent =
             "PAUSADO";
 
+
         playButton.textContent =
             "▶";
+
     }
 
 }
 
 
 /* =====================================================
-   ERROS YOUTUBE
+   ERROS
    ===================================================== */
 
 function onPlayerError(event) {
 
+
     console.log(
+
         "[YOUTUBE ERROR]",
+
         event.data
+
     );
+
 
     errorMessage.style.display =
         "block";
@@ -915,8 +1335,11 @@ function onPlayerError(event) {
     /* ERRO 153 */
 
     if (
+
         event.data === 153
+
     ) {
+
 
         errorMessage.textContent =
             "YouTube bloqueou o player: abra esta página pelo HTTPS/GitHub Pages.";
@@ -927,9 +1350,12 @@ function onPlayerError(event) {
     /* ERRO 101 / 150 */
 
     else if (
+
         event.data === 101 ||
         event.data === 150
+
     ) {
+
 
         errorMessage.textContent =
             "Este vídeo não permite reprodução incorporada.";
@@ -940,8 +1366,11 @@ function onPlayerError(event) {
     /* ERRO 100 */
 
     else if (
+
         event.data === 100
+
     ) {
+
 
         errorMessage.textContent =
             "Vídeo não encontrado ou privado.";
@@ -956,36 +1385,50 @@ function onPlayerError(event) {
    ===================================================== */
 
 playButton.addEventListener(
+
     "click",
+
     function () {
 
 
         if (
+
             !playerReady ||
             !player
+
         ) {
 
+
             console.log(
+
                 "[RADIO] Player ainda carregando..."
+
             );
 
+
             return;
+
         }
 
 
         if (playing) {
 
+
             player.pauseVideo();
+
 
         }
 
         else {
 
+
             player.playVideo();
+
 
         }
 
     }
+
 );
 
 
@@ -994,27 +1437,72 @@ playButton.addEventListener(
    ===================================================== */
 
 nextButton.addEventListener(
+
     "click",
+
     function () {
 
 
         if (
+
             !playerReady ||
             !player
+
         ) {
 
             return;
+
         }
 
 
         console.log(
+
             "[RADIO] Próxima música"
+
         );
 
 
+        /*
+         Guarda o estado antes
+         de mudar de música.
+        */
+
+        const estavaTocando =
+            playing;
+
+
+        /*
+         Pula para a próxima.
+        */
+
         player.nextVideo();
 
+
+        /*
+         Se estava tocando,
+         força a reprodução
+         da nova faixa.
+        */
+
+        if (estavaTocando) {
+
+
+            setTimeout(
+
+                function () {
+
+                    player.playVideo();
+
+                },
+
+                500
+
+            );
+
+        }
+
     }
+
 );
 
 
@@ -1023,27 +1511,70 @@ nextButton.addEventListener(
    ===================================================== */
 
 prevButton.addEventListener(
+
     "click",
+
     function () {
 
 
         if (
+
             !playerReady ||
             !player
+
         ) {
 
             return;
+
         }
 
 
         console.log(
+
             "[RADIO] Música anterior"
+
         );
 
 
+        /*
+         Guarda o estado.
+        */
+
+        const estavaTocando =
+            playing;
+
+
+        /*
+         Volta uma música.
+        */
+
         player.previousVideo();
 
+
+        /*
+         Continua tocando
+         se já estava tocando.
+        */
+
+        if (estavaTocando) {
+
+
+            setTimeout(
+
+                function () {
+
+                    player.playVideo();
+
+                },
+
+                500
+
+            );
+
+        }
+
     }
+
 );
 
 
@@ -1052,12 +1583,16 @@ prevButton.addEventListener(
    ===================================================== */
 
 volume.addEventListener(
+
     "input",
+
     function () {
 
 
         const value =
-            Number(this.value);
+            Number(
+                this.value
+            );
 
 
         volumeValue.textContent =
@@ -1065,9 +1600,12 @@ volume.addEventListener(
 
 
         if (
+
             playerReady &&
             player
+
         ) {
+
 
             player.setVolume(
                 value
@@ -1076,6 +1614,7 @@ volume.addEventListener(
         }
 
     }
+
 );
 
 
@@ -1083,37 +1622,46 @@ volume.addEventListener(
    TECLADO
 
    ESPAÇO = PLAY / PAUSE
-   SETA DIREITA = PRÓXIMA
-   SETA ESQUERDA = ANTERIOR
+   → = PRÓXIMA
+   ← = ANTERIOR
    ===================================================== */
 
 document.addEventListener(
+
     "keydown",
+
     function (event) {
 
 
         /*
-         Ignora quando estiver mexendo
-         no controle de volume.
+         Não interfere
+         no volume.
         */
 
         if (
+
             event.target.tagName ===
             "INPUT"
+
         ) {
 
             return;
+
         }
 
 
         /* ESPAÇO */
 
         if (
+
             event.code ===
             "Space"
+
         ) {
 
+
             event.preventDefault();
+
 
             playButton.click();
 
@@ -1123,11 +1671,15 @@ document.addEventListener(
         /* SETA DIREITA */
 
         else if (
+
             event.code ===
             "ArrowRight"
+
         ) {
 
+
             event.preventDefault();
+
 
             nextButton.click();
 
@@ -1137,21 +1689,28 @@ document.addEventListener(
         /* SETA ESQUERDA */
 
         else if (
+
             event.code ===
             "ArrowLeft"
+
         ) {
 
+
             event.preventDefault();
+
 
             prevButton.click();
 
         }
 
     }
+
 );
 
 </script>
 
+
 </body>
+
 </html>
-```
+
