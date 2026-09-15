@@ -14,9 +14,6 @@
 <meta name="referrer"
       content="strict-origin-when-cross-origin">
 
-
-<!-- FONTES -->
-
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
 
@@ -40,13 +37,10 @@
     padding: 0;
 }
 
-
 html,
 body {
-
     width: 100%;
     min-height: 100%;
-
 }
 
 
@@ -86,7 +80,6 @@ body {
     min-height: 100vh;
 
     overflow-x: hidden;
-
 }
 
 
@@ -114,7 +107,6 @@ body::before {
     background-size: 40px 40px;
 
     pointer-events: none;
-
 }
 
 
@@ -158,7 +150,6 @@ body::before {
     text-align: center;
 
     backdrop-filter: blur(15px);
-
 }
 
 
@@ -187,7 +178,6 @@ body::before {
 
         0 0 25px
         rgba(23,241,143,.25);
-
 }
 
 
@@ -201,7 +191,6 @@ body::before {
 
     color:
         rgba(255,255,255,.55);
-
 }
 
 
@@ -239,7 +228,6 @@ body::before {
     font-size: 12px;
 
     letter-spacing: 2px;
-
 }
 
 
@@ -253,7 +241,6 @@ body::before {
     background: #555;
 
     transition: .3s;
-
 }
 
 
@@ -267,7 +254,6 @@ body::before {
 
         0 0 15px
         rgba(23,241,143,.7);
-
 }
 
 
@@ -317,7 +303,6 @@ body::before {
 
         inset 0 0 35px
         rgba(23,241,143,.07);
-
 }
 
 
@@ -339,7 +324,6 @@ body::before {
 
         inset 0 0 20px
         rgba(23,241,143,.12);
-
 }
 
 
@@ -364,7 +348,6 @@ body::before {
 
         0 0 12px
         rgba(23,241,143,.6);
-
 }
 
 
@@ -391,7 +374,6 @@ body::before {
         );
 
     transition: .4s;
-
 }
 
 
@@ -402,31 +384,23 @@ body::before {
         7s
         linear
         infinite;
-
 }
 
 
 @keyframes spin {
 
     from {
-
-        transform:
-            rotate(0deg);
-
+        transform: rotate(0deg);
     }
 
     to {
-
-        transform:
-            rotate(360deg);
-
+        transform: rotate(360deg);
     }
-
 }
 
 
 /* =====================================================
-   NOME DA RÁDIO
+   NOME
    ===================================================== */
 
 .station-name {
@@ -443,7 +417,6 @@ body::before {
         rgba(255,255,255,.82);
 
     margin-bottom: 18px;
-
 }
 
 
@@ -459,12 +432,7 @@ body::before {
 
     align-items: center;
 
-    /*
-       DISTÂNCIA ENTRE OS BOTÕES
-    */
-
     gap: 32px;
-
 }
 
 
@@ -505,7 +473,6 @@ body::before {
         box-shadow .2s,
 
         background .2s;
-
 }
 
 
@@ -530,7 +497,6 @@ body::before {
 
         inset 0 0 20px
         rgba(23,241,143,.08);
-
 }
 
 
@@ -552,18 +518,16 @@ body::before {
 
         inset 0 0 12px
         rgba(23,241,143,.04);
-
 }
 
 
 /* =====================================================
-   HOVER PLAY
+   HOVER
    ===================================================== */
 
 .play:hover {
 
-    transform:
-        scale(1.05);
+    transform: scale(1.05);
 
     box-shadow:
 
@@ -572,18 +536,12 @@ body::before {
 
         inset 0 0 25px
         rgba(23,241,143,.12);
-
 }
 
 
-/* =====================================================
-   HOVER OUTROS
-   ===================================================== */
-
 .control-btn:hover {
 
-    transform:
-        scale(1.08);
+    transform: scale(1.08);
 
     background:
 
@@ -600,20 +558,13 @@ body::before {
 
         inset 0 0 15px
         rgba(23,241,143,.08);
-
 }
 
-
-/* =====================================================
-   CLIQUE
-   ===================================================== */
 
 .play:active,
 .control-btn:active {
 
-    transform:
-        scale(.92);
-
+    transform: scale(.92);
 }
 
 
@@ -630,7 +581,6 @@ body::before {
     align-items: center;
 
     gap: 12px;
-
 }
 
 
@@ -640,7 +590,6 @@ body::before {
         rgba(255,255,255,.5);
 
     font-size: 18px;
-
 }
 
 
@@ -658,7 +607,6 @@ input[type="range"] {
         rgba(255,255,255,.12);
 
     outline: none;
-
 }
 
 
@@ -674,12 +622,10 @@ input[type="range"]::-webkit-slider-thumb {
     background: #17f18f;
 
     box-shadow:
-
         0 0 10px
         rgba(23,241,143,.7);
 
     cursor: pointer;
-
 }
 
 
@@ -695,7 +641,6 @@ input[type="range"]::-moz-range-thumb {
     border: none;
 
     cursor: pointer;
-
 }
 
 
@@ -709,7 +654,6 @@ input[type="range"]::-moz-range-thumb {
         rgba(255,255,255,.45);
 
     font-size: 12px;
-
 }
 
 
@@ -726,7 +670,6 @@ input[type="range"]::-moz-range-thumb {
     color: #ff6868;
 
     display: none;
-
 }
 
 
@@ -750,12 +693,11 @@ input[type="range"]::-moz-range-thumb {
 
     color:
         rgba(255,255,255,.28);
-
 }
 
 
 /* =====================================================
-   PLAYER YOUTUBE INVISÍVEL
+   PLAYER YOUTUBE
    ===================================================== */
 
 #youtube-player {
@@ -770,7 +712,6 @@ input[type="range"]::-moz-range-thumb {
     pointer-events: none;
 
     left: -9999px;
-
 }
 
 
@@ -786,13 +727,11 @@ input[type="range"]::-moz-range-thumb {
             28px
             18px
             22px;
-
     }
 
     .controls {
 
         gap: 24px;
-
     }
 
 }
@@ -805,47 +744,29 @@ input[type="range"]::-moz-range-thumb {
 <body>
 
 
-<!-- =====================================================
-     RADIO
-     ===================================================== -->
-
 <div class="radio" id="radio">
 
 
-    <!-- LOGO -->
-
     <div class="logo">
-
         CONNECT CASSIO
-
     </div>
 
-
-    <!-- SUBTÍTULO -->
 
     <div class="subtitle">
-
         WEB RÁDIO
-
     </div>
 
-
-    <!-- STATUS -->
 
     <div class="status" id="status">
 
         <span class="status-dot"></span>
 
         <span id="statusText">
-
             PAUSADO
-
         </span>
 
     </div>
 
-
-    <!-- DISCO -->
 
     <div class="cover">
 
@@ -854,34 +775,19 @@ input[type="range"]::-moz-range-thumb {
     </div>
 
 
-    <!-- NOME -->
-
     <div class="station-name">
-
         CONNECT CASSIO RADIO
-
     </div>
 
-
-    <!-- =================================================
-         CONTROLES
-         ================================================= -->
 
     <div class="controls">
 
 
-        <!-- ANTERIOR -->
-
         <button
-
             class="control-btn"
-
             id="prevButton"
-
             aria-label="Música anterior"
-
             title="Música anterior"
-
             type="button">
 
             ⏮
@@ -889,18 +795,11 @@ input[type="range"]::-moz-range-thumb {
         </button>
 
 
-        <!-- PLAY / PAUSE -->
-
         <button
-
             class="play"
-
             id="playButton"
-
             aria-label="Reproduzir"
-
             title="Play / Pause"
-
             type="button">
 
             ▶
@@ -908,18 +807,11 @@ input[type="range"]::-moz-range-thumb {
         </button>
 
 
-        <!-- PRÓXIMA -->
-
         <button
-
             class="control-btn"
-
             id="nextButton"
-
             aria-label="Próxima música"
-
             title="Próxima música"
-
             type="button">
 
             ⏭
@@ -930,53 +822,32 @@ input[type="range"]::-moz-range-thumb {
     </div>
 
 
-    <!-- =================================================
-         VOLUME
-         ================================================= -->
-
     <div class="volume-area">
 
-
         <span class="volume-icon">
-
             🔊
-
         </span>
 
-
         <input
-
             id="volume"
-
             type="range"
-
             min="0"
-
             max="100"
-
             value="80">
 
-
         <span
-
             class="volume-value"
-
             id="volumeValue">
 
             80%
 
         </span>
 
-
     </div>
 
 
-    <!-- ERRO -->
-
     <div
-
         class="error"
-
         id="errorMessage">
 
         Não foi possível carregar o player
@@ -985,26 +856,669 @@ input[type="range"]::-moz-range-thumb {
     </div>
 
 
-    <!-- RODAPÉ -->
-
     <div class="footer">
-
         PLAYLIST YOUTUBE • CONNECT CASSIO
-
     </div>
 
 
 </div>
 
 
-<!-- =====================================================
-     PLAYER YOUTUBE
-     ===================================================== -->
-
 <div id="youtube-player"></div>
 
 
-<script> /* ===================================================== CONFIGURAÇÃO DA PLAYLIST ALTERE SOMENTE ESTE ID ===================================================== */ const PLAYLIST_ID = "PLNWbSmfvxyQFtCXeLH9BPz9nrrjcIFfCH"; /* ===================================================== ORIGIN AUTOMÁTICO ===================================================== */ const PAGE_ORIGIN = window.location.origin; /* ===================================================== ELEMENTOS ===================================================== */ const playButton = document.getElementById( "playButton" ); const nextButton = document.getElementById( "nextButton" ); const prevButton = document.getElementById( "prevButton" ); const volume = document.getElementById( "volume" ); const volumeValue = document.getElementById( "volumeValue" ); const status = document.getElementById( "status" ); const statusText = document.getElementById( "statusText" ); const radio = document.getElementById( "radio" ); const errorMessage = document.getElementById( "errorMessage" ); /* ===================================================== VARIÁVEIS DO PLAYER ===================================================== */ let player = null; let playerReady = false; /* Estado real informado pelo YouTube. */ let playing = false; /* ESTADO DESEJADO PELO USUÁRIO. true = usuário quer que continue tocando false = usuário quer que fique pausado */ let radioDesejaTocar = false; /* Indica que estamos trocando de música. */ let trocandoMusica = false; /* ===================================================== CARREGAR API YOUTUBE ===================================================== */ const tag = document.createElement( "script" ); tag.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(tag); /* ===================================================== YOUTUBE API READY ===================================================== */ function onYouTubeIframeAPIReady() { player = new YT.Player( "youtube-player", { width: "1", height: "1", playerVars: { listType: "playlist", list: PLAYLIST_ID, origin: PAGE_ORIGIN, enablejsapi: 1, playsinline: 1, rel: 0, modestbranding: 1 }, events: { onReady: onPlayerReady, onStateChange: onPlayerStateChange, onError: onPlayerError } } ); } /* ===================================================== PLAYER PRONTO ===================================================== */ function onPlayerReady(event) { playerReady = true; player.setVolume( Number( volume.value ) ); console.log( "[RADIO] Player pronto" ); } /* ===================================================== ATUALIZA INTERFACE ===================================================== */ function mostrarTocando() { playing = true; radio.classList.add( "playing" ); status.classList.add( "live" ); statusText.textContent = "NO AR"; playButton.textContent = "❚❚"; playButton.setAttribute( "aria-label", "Pausar" ); playButton.setAttribute( "title", "Pausar" ); errorMessage.style.display = "none"; } function mostrarPausado() { playing = false; radio.classList.remove( "playing" ); status.classList.remove( "live" ); statusText.textContent = "PAUSADO"; playButton.textContent = "▶"; playButton.setAttribute( "aria-label", "Reproduzir" ); playButton.setAttribute( "title", "Play / Pause" ); } /* ===================================================== ESTADO DO PLAYER ===================================================== */ function onPlayerStateChange(event) { console.log( "[YOUTUBE STATE]", event.data, "Deseja tocar:", radioDesejaTocar, "Trocando:", trocandoMusica ); /* ================================================= TOCANDO ================================================= */ if ( event.data === YT.PlayerState.PLAYING ) { trocandoMusica = false; mostrarTocando(); return; } /* ================================================= PAUSADO ================================================= */ if ( event.data === YT.PlayerState.PAUSED ) { /* IMPORTANTE: Se estamos trocando de música e o usuário queria continuar tocando, NÃO consideramos isso como uma pausa feita pelo usuário. */ if ( trocandoMusica && radioDesejaTocar ) { console.log( "[RADIO] PAUSED durante troca - mantendo reprodução" ); return; } /* Aqui sim foi uma pausa verdadeira. */ radioDesejaTocar = false; mostrarPausado(); return; } /* ================================================= FINALIZADO ================================================= */ if ( event.data === YT.PlayerState.ENDED ) { /* Se a playlist estiver avançando normalmente, não queremos transformar isso em uma pausa da rádio. */ if ( radioDesejaTocar ) { console.log( "[RADIO] Música terminou - playlist continuará" ); return; } mostrarPausado(); return; } } /* ===================================================== ERROS ===================================================== */ function onPlayerError(event) { console.log( "[YOUTUBE ERROR]", event.data ); errorMessage.style.display = "block"; /* ERRO 153 */ if ( event.data === 153 ) { errorMessage.textContent = "YouTube bloqueou o player: abra esta página pelo HTTPS/GitHub Pages."; } /* ERRO 101 / 150 */ else if ( event.data === 101 || event.data === 150 ) { errorMessage.textContent = "Este vídeo não permite reprodução incorporada."; } /* ERRO 100 */ else if ( event.data === 100 ) { errorMessage.textContent = "Vídeo não encontrado ou privado."; } } /* ===================================================== PLAY / PAUSE ===================================================== */ playButton.addEventListener( "click", function () { if ( !playerReady || !player ) { console.log( "[RADIO] Player ainda carregando..." ); return; } /* ============================================= SE ESTÁ TOCANDO → PAUSAR ============================================= */ if ( playing ) { /* Aqui foi o usuário que pediu pausa. */ radioDesejaTocar = false; player.pauseVideo(); console.log( "[RADIO] PAUSA solicitada pelo usuário" ); } /* ============================================= SE ESTÁ PAUSADO → TOCAR ============================================= */ else { /* Aqui foi o usuário que pediu reprodução. */ radioDesejaTocar = true; player.playVideo(); console.log( "[RADIO] PLAY solicitado pelo usuário" ); } } ); /* ===================================================== PRÓXIMA MÚSICA ===================================================== */ nextButton.addEventListener( "click", function () { if ( !playerReady || !player ) { return; } console.log( "[RADIO] Próxima música" ); /* GUARDA A INTENÇÃO DO USUÁRIO */ const continuarTocando = radioDesejaTocar || playing; /* Mantém essa intenção durante toda a troca. */ radioDesejaTocar = continuarTocando; trocandoMusica = true; /* Muda para próxima faixa. */ player.nextVideo(); /* Se estava tocando, tenta iniciar a nova faixa. */ if ( continuarTocando ) { setTimeout( function () { if ( player && playerReady && radioDesejaTocar ) { console.log( "[RADIO] Forçando PLAY da próxima" ); player.playVideo(); } }, 700 ); } } ); /* ===================================================== MÚSICA ANTERIOR ===================================================== */ prevButton.addEventListener( "click", function () { if ( !playerReady || !player ) { return; } console.log( "[RADIO] Música anterior" ); /* GUARDA A INTENÇÃO DO USUÁRIO */ const continuarTocando = radioDesejaTocar || playing; /* Mantém a intenção durante a troca. */ radioDesejaTocar = continuarTocando; trocandoMusica = true; /* Volta uma faixa. */ player.previousVideo(); /* Se estava tocando, continua tocando. */ if ( continuarTocando ) { setTimeout( function () { if ( player && playerReady && radioDesejaTocar ) { console.log( "[RADIO] Forçando PLAY da anterior" ); player.playVideo(); } }, 700 ); } } ); /* ===================================================== VOLUME ===================================================== */ volume.addEventListener( "input", function () { const value = Number( this.value ); volumeValue.textContent = value + "%"; if ( playerReady && player ) { player.setVolume( value ); } } ); /* ===================================================== TECLADO ESPAÇO = PLAY / PAUSE → = PRÓXIMA ← = ANTERIOR ===================================================== */ document.addEventListener( "keydown", function (event) { /* Não interfere no volume. */ if ( event.target.tagName === "INPUT" ) { return; } /* ============================================= ESPAÇO ============================================= */ if ( event.code === "Space" ) { event.preventDefault(); playButton.click(); } /* ============================================= SETA DIREITA ============================================= */ else if ( event.code === "ArrowRight" ) { event.preventDefault(); nextButton.click(); } /* ============================================= SETA ESQUERDA ============================================= */ else if ( event.code === "ArrowLeft" ) { event.preventDefault(); prevButton.click(); } } ); </script>
+<script>
+
+/* =====================================================
+   PLAYLIST
+   ALTERE SOMENTE ESTE ID
+   ===================================================== */
+
+const PLAYLIST_ID =
+    "PLNWbSmfvxyQFtCXeLH9BPz9nrrjcIFfCH";
+
+
+/* =====================================================
+   ORIGIN
+   ===================================================== */
+
+const PAGE_ORIGIN =
+    window.location.origin;
+
+
+/* =====================================================
+   ELEMENTOS
+   ===================================================== */
+
+const playButton =
+    document.getElementById("playButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const prevButton =
+    document.getElementById("prevButton");
+
+const volume =
+    document.getElementById("volume");
+
+const volumeValue =
+    document.getElementById("volumeValue");
+
+const status =
+    document.getElementById("status");
+
+const statusText =
+    document.getElementById("statusText");
+
+const radio =
+    document.getElementById("radio");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+/* =====================================================
+   ESTADOS
+   ===================================================== */
+
+let player = null;
+
+let playerReady = false;
+
+let playing = false;
+
+
+/*
+   Intenção do usuário.
+
+   true = deve tocar
+   false = deve ficar pausado
+*/
+
+let radioDesejaTocar = true;
+
+
+/*
+   Indica troca de faixa.
+*/
+
+let trocandoMusica = false;
+
+
+/* =====================================================
+   CARREGAR API YOUTUBE
+   ===================================================== */
+
+const tag =
+    document.createElement("script");
+
+tag.src =
+    "https://www.youtube.com/iframe_api";
+
+document.head.appendChild(tag);
+
+
+/* =====================================================
+   YOUTUBE API READY
+   ===================================================== */
+
+function onYouTubeIframeAPIReady() {
+
+    player =
+        new YT.Player(
+
+            "youtube-player",
+
+            {
+
+                width: "1",
+
+                height: "1",
+
+                playerVars: {
+
+                    listType:
+                        "playlist",
+
+                    list:
+                        PLAYLIST_ID,
+
+                    autoplay:
+                        1,
+
+                    origin:
+                        PAGE_ORIGIN,
+
+                    enablejsapi:
+                        1,
+
+                    playsinline:
+                        1,
+
+                    rel:
+                        0,
+
+                    modestbranding:
+                        1
+
+                },
+
+                events: {
+
+                    onReady:
+                        onPlayerReady,
+
+                    onStateChange:
+                        onPlayerStateChange,
+
+                    onError:
+                        onPlayerError
+
+                }
+
+            }
+
+        );
+
+}
+
+
+/* =====================================================
+   PLAYER PRONTO
+   ===================================================== */
+
+function onPlayerReady() {
+
+    playerReady = true;
+
+    player.setVolume(
+        Number(volume.value)
+    );
+
+
+    /*
+       AUTOPLAY
+
+       Tenta iniciar imediatamente.
+    */
+
+    radioDesejaTocar = true;
+
+    player.playVideo();
+
+
+    console.log(
+        "[RADIO] Autoplay solicitado"
+    );
+
+}
+
+
+/* =====================================================
+   INTERFACE TOCANDO
+   ===================================================== */
+
+function mostrarTocando() {
+
+    playing = true;
+
+    radio.classList.add(
+        "playing"
+    );
+
+    status.classList.add(
+        "live"
+    );
+
+    statusText.textContent =
+        "NO AR";
+
+    playButton.textContent =
+        "❚❚";
+
+    playButton.setAttribute(
+        "aria-label",
+        "Pausar"
+    );
+
+    playButton.setAttribute(
+        "title",
+        "Pausar"
+    );
+
+    errorMessage.style.display =
+        "none";
+
+}
+
+
+/* =====================================================
+   INTERFACE PAUSADA
+   ===================================================== */
+
+function mostrarPausado() {
+
+    playing = false;
+
+    radio.classList.remove(
+        "playing"
+    );
+
+    status.classList.remove(
+        "live"
+    );
+
+    statusText.textContent =
+        "PAUSADO";
+
+    playButton.textContent =
+        "▶";
+
+    playButton.setAttribute(
+        "aria-label",
+        "Reproduzir"
+    );
+
+    playButton.setAttribute(
+        "title",
+        "Play / Pause"
+    );
+
+}
+
+
+/* =====================================================
+   ESTADO YOUTUBE
+   ===================================================== */
+
+function onPlayerStateChange(event) {
+
+
+    /* ---------------------------------------------
+       PLAYING
+       --------------------------------------------- */
+
+    if (
+        event.data ===
+        YT.PlayerState.PLAYING
+    ) {
+
+        trocandoMusica = false;
+
+        mostrarTocando();
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------
+       PAUSED
+       --------------------------------------------- */
+
+    if (
+        event.data ===
+        YT.PlayerState.PAUSED
+    ) {
+
+        /*
+           Se foi apenas um PAUSED intermediário
+           durante a troca de música, ignoramos.
+        */
+
+        if (
+            trocandoMusica &&
+            radioDesejaTocar
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+           Pausa real.
+        */
+
+        radioDesejaTocar = false;
+
+        mostrarPausado();
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------
+       BUFFERING
+       --------------------------------------------- */
+
+    if (
+        event.data ===
+        YT.PlayerState.BUFFERING
+    ) {
+
+        /*
+           Não altera o estado da interface.
+        */
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------
+       ENDED
+       --------------------------------------------- */
+
+    if (
+        event.data ===
+        YT.PlayerState.ENDED
+    ) {
+
+        /*
+           Se a rádio estava tocando,
+           deixa a playlist continuar.
+        */
+
+        if (
+            radioDesejaTocar
+        ) {
+
+            return;
+
+        }
+
+
+        mostrarPausado();
+
+    }
+
+}
+
+
+/* =====================================================
+   ERROS
+   ===================================================== */
+
+function onPlayerError(event) {
+
+    console.log(
+        "[YOUTUBE ERROR]",
+        event.data
+    );
+
+    errorMessage.style.display =
+        "block";
+
+
+    if (
+        event.data === 153
+    ) {
+
+        errorMessage.textContent =
+            "YouTube bloqueou o player: abra esta página pelo HTTPS/GitHub Pages.";
+
+    }
+
+    else if (
+        event.data === 101 ||
+        event.data === 150
+    ) {
+
+        errorMessage.textContent =
+            "Este vídeo não permite reprodução incorporada.";
+
+    }
+
+    else if (
+        event.data === 100
+    ) {
+
+        errorMessage.textContent =
+            "Vídeo não encontrado ou privado.";
+
+    }
+
+}
+
+
+/* =====================================================
+   PLAY / PAUSE
+   ===================================================== */
+
+playButton.addEventListener(
+    "click",
+    function() {
+
+
+        if (
+            !playerReady ||
+            !player
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+           PAUSAR
+        */
+
+        if (playing) {
+
+            radioDesejaTocar =
+                false;
+
+            trocandoMusica =
+                false;
+
+            player.pauseVideo();
+
+            return;
+
+        }
+
+
+        /*
+           TOCAR
+        */
+
+        radioDesejaTocar =
+            true;
+
+        player.playVideo();
+
+    }
+);
+
+
+/* =====================================================
+   PRÓXIMA
+   ===================================================== */
+
+nextButton.addEventListener(
+    "click",
+    function() {
+
+
+        if (
+            !playerReady ||
+            !player
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+           Guarda o estado antes
+           da troca.
+        */
+
+        const continuar =
+            playing ||
+            radioDesejaTocar;
+
+
+        radioDesejaTocar =
+            continuar;
+
+
+        trocandoMusica =
+            true;
+
+
+        /*
+           PRÓXIMA IMEDIATA
+
+           Sem setTimeout.
+        */
+
+        player.nextVideo();
+
+    }
+);
+
+
+/* =====================================================
+   ANTERIOR
+   ===================================================== */
+
+prevButton.addEventListener(
+    "click",
+    function() {
+
+
+        if (
+            !playerReady ||
+            !player
+        ) {
+
+            return;
+
+        }
+
+
+        const continuar =
+            playing ||
+            radioDesejaTocar;
+
+
+        radioDesejaTocar =
+            continuar;
+
+
+        trocandoMusica =
+            true;
+
+
+        /*
+           ANTERIOR IMEDIATA
+        */
+
+        player.previousVideo();
+
+    }
+);
+
+
+/* =====================================================
+   VOLUME
+   ===================================================== */
+
+volume.addEventListener(
+    "input",
+    function() {
+
+
+        const value =
+            Number(this.value);
+
+
+        volumeValue.textContent =
+            value + "%";
+
+
+        if (
+            playerReady &&
+            player
+        ) {
+
+            player.setVolume(
+                value
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   TECLADO
+   ===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (
+            event.target.tagName ===
+            "INPUT"
+        ) {
+
+            return;
+
+        }
+
+
+        /* ESPAÇO */
+
+        if (
+            event.code === "Space"
+        ) {
+
+            event.preventDefault();
+
+            playButton.click();
+
+        }
+
+
+        /* DIREITA */
+
+        else if (
+            event.code === "ArrowRight"
+        ) {
+
+            event.preventDefault();
+
+            nextButton.click();
+
+        }
+
+
+        /* ESQUERDA */
+
+        else if (
+            event.code === "ArrowLeft"
+        ) {
+
+            event.preventDefault();
+
+            prevButton.click();
+
+        }
+
+    }
+);
+
+</script>
 
 
 </body>
