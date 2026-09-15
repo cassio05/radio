@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -762,7 +761,7 @@ input[type="range"]::-moz-range-thumb {
         <span class="status-dot"></span>
 
         <span id="statusText">
-            PAUSADO
+            CLIQUE PARA OUVIR
         </span>
 
     </div>
@@ -871,7 +870,6 @@ input[type="range"]::-moz-range-thumb {
 
 /* =====================================================
    PLAYLIST
-   ALTERE SOMENTE ESTE ID
    ===================================================== */
 
 const PLAYLIST_ID =
@@ -928,20 +926,7 @@ let playerReady = false;
 
 let playing = false;
 
-
-/*
-   Intenção do usuário.
-
-   true = deve tocar
-   false = deve ficar pausado
-*/
-
-let radioDesejaTocar = true;
-
-
-/*
-   Indica troca de faixa.
-*/
+let radioDesejaTocar = false;
 
 let trocandoMusica = false;
 
@@ -985,7 +970,7 @@ function onYouTubeIframeAPIReady() {
                         PLAYLIST_ID,
 
                     autoplay:
-                        1,
+                        0,
 
                     origin:
                         PAGE_ORIGIN,
@@ -1036,21 +1021,15 @@ function onPlayerReady() {
         Number(volume.value)
     );
 
+    player.cuePlaylist({
 
-    /*
-       AUTOPLAY
+        listType:
+            "playlist",
 
-       Tenta iniciar imediatamente.
-    */
+        list:
+            PLAYLIST_ID
 
-    radioDesejaTocar = true;
-
-    player.playVideo();
-
-
-    console.log(
-        "[RADIO] Autoplay solicitado"
-    );
+    });
 
 }
 
@@ -1135,16 +1114,15 @@ function mostrarPausado() {
 function onPlayerStateChange(event) {
 
 
-    /* ---------------------------------------------
-       PLAYING
-       --------------------------------------------- */
+    /* PLAYING */
 
     if (
         event.data ===
         YT.PlayerState.PLAYING
     ) {
 
-        trocandoMusica = false;
+        trocandoMusica =
+            false;
 
         mostrarTocando();
 
@@ -1153,19 +1131,12 @@ function onPlayerStateChange(event) {
     }
 
 
-    /* ---------------------------------------------
-       PAUSED
-       --------------------------------------------- */
+    /* PAUSED */
 
     if (
         event.data ===
         YT.PlayerState.PAUSED
     ) {
-
-        /*
-           Se foi apenas um PAUSED intermediário
-           durante a troca de música, ignoramos.
-        */
 
         if (
             trocandoMusica &&
@@ -1176,12 +1147,8 @@ function onPlayerStateChange(event) {
 
         }
 
-
-        /*
-           Pausa real.
-        */
-
-        radioDesejaTocar = false;
+        radioDesejaTocar =
+            false;
 
         mostrarPausado();
 
@@ -1190,37 +1157,33 @@ function onPlayerStateChange(event) {
     }
 
 
-    /* ---------------------------------------------
-       BUFFERING
-       --------------------------------------------- */
+    /* BUFFERING */
 
     if (
         event.data ===
         YT.PlayerState.BUFFERING
     ) {
 
-        /*
-           Não altera o estado da interface.
-        */
+        if (
+            radioDesejaTocar
+        ) {
+
+            statusText.textContent =
+                "CARREGANDO...";
+
+        }
 
         return;
 
     }
 
 
-    /* ---------------------------------------------
-       ENDED
-       --------------------------------------------- */
+    /* ENDED */
 
     if (
         event.data ===
         YT.PlayerState.ENDED
     ) {
-
-        /*
-           Se a rádio estava tocando,
-           deixa a playlist continuar.
-        */
 
         if (
             radioDesejaTocar
@@ -1229,7 +1192,6 @@ function onPlayerStateChange(event) {
             return;
 
         }
-
 
         mostrarPausado();
 
@@ -1303,9 +1265,7 @@ playButton.addEventListener(
         }
 
 
-        /*
-           PAUSAR
-        */
+        /* PAUSAR */
 
         if (playing) {
 
@@ -1322,14 +1282,29 @@ playButton.addEventListener(
         }
 
 
-        /*
-           TOCAR
-        */
+        /* TOCAR */
 
         radioDesejaTocar =
             true;
 
-        player.playVideo();
+        const state =
+            player.getPlayerState();
+
+
+        if (
+            state === YT.PlayerState.CUED ||
+            state === -1
+        ) {
+
+            player.playVideoAt(0);
+
+        }
+
+        else {
+
+            player.playVideo();
+
+        }
 
     }
 );
@@ -1353,32 +1328,33 @@ nextButton.addEventListener(
 
         }
 
-
-        /*
-           Guarda o estado antes
-           da troca.
-        */
-
-        const continuar =
-            playing ||
-            radioDesejaTocar;
-
-
         radioDesejaTocar =
-            continuar;
-
+            true;
 
         trocandoMusica =
             true;
 
+        statusText.textContent =
+            "CARREGANDO...";
 
-        /*
-           PRÓXIMA IMEDIATA
+        const state =
+            player.getPlayerState();
 
-           Sem setTimeout.
-        */
 
-        player.nextVideo();
+        if (
+            state === YT.PlayerState.CUED ||
+            state === -1
+        ) {
+
+            player.playVideoAt(1);
+
+        }
+
+        else {
+
+            player.nextVideo();
+
+        }
 
     }
 );
@@ -1402,25 +1378,33 @@ prevButton.addEventListener(
 
         }
 
-
-        const continuar =
-            playing ||
-            radioDesejaTocar;
-
-
         radioDesejaTocar =
-            continuar;
-
+            true;
 
         trocandoMusica =
             true;
 
+        statusText.textContent =
+            "CARREGANDO...";
 
-        /*
-           ANTERIOR IMEDIATA
-        */
+        const state =
+            player.getPlayerState();
 
-        player.previousVideo();
+
+        if (
+            state === YT.PlayerState.CUED ||
+            state === -1
+        ) {
+
+            player.playVideoAt(0);
+
+        }
+
+        else {
+
+            player.previousVideo();
+
+        }
 
     }
 );
@@ -1524,4 +1508,3 @@ document.addEventListener(
 </body>
 
 </html>
-
